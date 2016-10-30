@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.maiml.baseui.MainActivity">
+
+     <com.maiml.baseui.BaseItemUI
+         android:id="@+id/layout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         app:text_size  = "15"
+         app:text_color = "@color/gray_333333"
+         app:icon_margin_left = "10"
+         app:icon_text_margin = "10"
+         app:arrow_margin_right = "10"
+         app:item_height = "40"
+         app:item_bg_color = "@color/white"
+         app:item_margin_top = "10"
+         app:line_color = "@color/colorPrimary"
+         app:first_item_margin_top = "10"
+         >
+
+     </com.maiml.baseui.BaseItemUI>
+</RelativeLayout>
