@@ -6,7 +6,8 @@
 
 #效果图
 
-![image2.png](http://upload-images.jianshu.io/upload_images/1157085-66b45972142e8328.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![这里写图片描述](https://github.com/maimingliang/BaseItemLayout/blob/master/image2.png)
+
 
 
 #使用
