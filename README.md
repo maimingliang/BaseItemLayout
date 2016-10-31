@@ -6,9 +6,6 @@
 
 #效果图
 
-
-![这里写图片描述](https://github.com/maimingliang/BaseItemLayout/blob/master/image1.png)
-
 ![这里写图片描述](https://github.com/maimingliang/BaseItemLayout/blob/master/image2.png)
 
 
