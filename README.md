@@ -115,7 +115,7 @@
 
 #参数图解
 
-![这里写图片描述](https://github.com/maimingliang/BaseItemLayout/blob/master/image2.png)
+![这里写图片描述](https://github.com/maimingliang/BaseItemLayout/blob/master/image3.png)
 
 
 #关于我
