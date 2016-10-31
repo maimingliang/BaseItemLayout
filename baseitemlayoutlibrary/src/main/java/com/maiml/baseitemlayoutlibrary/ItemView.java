@@ -1,4 +1,4 @@
-package com.maiml.baseui;
+package com.maiml.baseitemlayoutlibrary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.maiml.baseitemlayoutlibrary.R;
 import com.maiml.baseui.utils.DensityUtil;
 
 /**
@@ -120,6 +121,11 @@ public class ItemView extends RelativeLayout {
      * @param isShow 是否显示
      */
     public void setArrowStyle(int resId,boolean isShow ,int arrowMarginRight){
+
+        if(resId == 0){
+            arrowImg.setVisibility(GONE);
+            return;
+        }
 
         arrowLp.rightMargin = DensityUtil.dip2px(mContext,arrowMarginRight);
 

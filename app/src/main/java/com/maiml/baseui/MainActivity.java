@@ -4,20 +4,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.maiml.baseitemlayoutlibrary.BaseItemLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private BaseItemUI layout;
+    private BaseItemLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        layout = (BaseItemUI) findViewById(R.id.layout);
+        layout = (BaseItemLayout) findViewById(R.id.layout);
 
         initData();
     }
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
              .create();
 
 
-        layout.setOnBaseItemClick(new BaseItemUI.OnBaseItemClick() {
+        layout.setOnBaseItemClick(new BaseItemLayout.OnBaseItemClick() {
             @Override
             public void onItemClick(int position) {
                 Log.e(TAG,"----- position = " + position);

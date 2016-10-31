@@ -3,9 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BaseUI.iml" filepath="$PROJECT_DIR$/BaseUI.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BaseUI.iml" filepath="$PROJECT_DIR$/BaseUI.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baseitemlayoutlibrary/baseitemlayoutlibrary.iml" filepath="$PROJECT_DIR$/baseitemlayoutlibrary/baseitemlayoutlibrary.iml" />
     </modules>
   </component>
 </project>

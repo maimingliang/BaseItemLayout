@@ -1,4 +1,4 @@
-package com.maiml.baseui;
+package com.maiml.baseitemlayoutlibrary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.maiml.baseitemlayoutlibrary.ItemView;
+import com.maiml.baseitemlayoutlibrary.R;
 import com.maiml.baseui.utils.DensityUtil;
 
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ import java.util.List;
  * Created by maimingliang on 2016/10/27.
  */
 
-public class BaseItemUI extends LinearLayout {
+public class BaseItemLayout extends LinearLayout {
 
 
 
@@ -92,15 +94,15 @@ public class BaseItemUI extends LinearLayout {
 
     private List<View> viewList = new ArrayList<>();
 
-    public BaseItemUI(Context context) {
+    public BaseItemLayout(Context context) {
         this(context,null);
     }
 
-    public BaseItemUI(Context context, AttributeSet attrs) {
+    public BaseItemLayout(Context context, AttributeSet attrs) {
         this(context,attrs,0);
     }
 
-    public BaseItemUI(Context context, AttributeSet attrs, int defStyleAttr) {
+    public BaseItemLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
 
@@ -129,19 +131,15 @@ public class BaseItemUI extends LinearLayout {
     public void create(){
 
         if(valueList.size() <= 0){
-            throw new RuntimeException("");
+            throw new RuntimeException("valueList  is null");
         }
 
         if(resIdList.size() <= 0){
-            throw new RuntimeException("");
+            throw new RuntimeException(" resIdList is null");
         }
 
         if(valueList.size() != resIdList.size()){
-            throw new RuntimeException("");
-        }
-
-        if(arrowResId == 0){
-            throw new RuntimeException("");
+            throw new RuntimeException("params not match, valueList.size() should be equal resIdList.size()");
         }
 
         for( int i = 0 ;i < valueList.size();i++){
@@ -234,13 +232,13 @@ public class BaseItemUI extends LinearLayout {
 
 
 
-    public BaseItemUI setItemMarginTop(int index,int value){
+    public BaseItemLayout setItemMarginTop(int index, int value){
         marginArray.put(index,value);
         return this;
     }
 
 
-    public BaseItemUI setItemMarginTop(int value){
+    public BaseItemLayout setItemMarginTop(int value){
 
         if(valueList.size() <= 0){
             throw  new RuntimeException("");
@@ -253,32 +251,32 @@ public class BaseItemUI extends LinearLayout {
     }
 
 
-    public BaseItemUI setValueList(List<String> valueList) {
+    public BaseItemLayout setValueList(List<String> valueList) {
         this.valueList = valueList;
         return this;
     }
 
-    public BaseItemUI setResIdList(List<Integer> resIdList) {
+    public BaseItemLayout setResIdList(List<Integer> resIdList) {
         this.resIdList = resIdList;
         return this;
     }
 
-    public BaseItemUI setArrowResId(int arrowResId) {
+    public BaseItemLayout setArrowResId(int arrowResId) {
         this.arrowResId = arrowResId;
         return this;
     }
 
-    public BaseItemUI setIconWidth(int iconWidth) {
+    public BaseItemLayout setIconWidth(int iconWidth) {
         this.iconWidth = iconWidth;
         return this;
     }
 
-    public BaseItemUI setIconHeight(int iconHeight) {
+    public BaseItemLayout setIconHeight(int iconHeight) {
         this.iconHeight = iconHeight;
         return this;
     }
 
-    public BaseItemUI setArrowIsShow(boolean arrowIsShow) {
+    public BaseItemLayout setArrowIsShow(boolean arrowIsShow) {
         this.arrowIsShow = arrowIsShow;
         return this;
     }

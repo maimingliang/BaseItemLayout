@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <item name="img_id" type="id" />
+    <item name="txt_id" type="id" />
+    <item name="arrow_id" type="id" />
+</resources>

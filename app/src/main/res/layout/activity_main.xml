@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.maiml.baseui.MainActivity">
 
-     <com.maiml.baseui.BaseItemUI
+     <com.maiml.baseitemlayoutlibrary.BaseItemLayout
          android:id="@+id/layout"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
@@ -20,5 +20,5 @@
          app:line_color = "@color/line_d6d6d6"
          >
 
-     </com.maiml.baseui.BaseItemUI>
+     </com.maiml.baseitemlayoutlibrary.BaseItemLayout>
 </RelativeLayout>

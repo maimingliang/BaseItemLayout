@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--item attrs-->
+    <declare-styleable name="ItemAttrs">
+
+        <attr name="text_size" format="integer"/>
+        <attr name="text_color" format="color"/>
+         <attr name="icon_margin_left" format="integer"/>
+        <attr name="icon_text_margin" format="integer"/>
+        <attr name="arrow_margin_right" format="integer"/>
+        <attr name="item_height" format="integer"/>
+         <attr name="line_color" format="color"/>
+
+     </declare-styleable>
+
+
+
+
+
+</resources>
