@@ -8,9 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.maiml.baseitemlayoutlibrary.ItemView;
-import com.maiml.baseitemlayoutlibrary.R;
-import com.maiml.baseui.utils.DensityUtil;
+
+import com.maiml.baseitemlayoutlibrary.utils.DensityUtil;
 
 import java.util.ArrayList;
 import java.util.List;
