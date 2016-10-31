@@ -10,7 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.maiml.baseitemlayoutlibrary.R;
-import com.maiml.baseui.utils.DensityUtil;
+import com.maiml.library.utils.DensityUtil;
+
 
 /**
  * Created by maimingliang on 2016/10/29.
