@@ -16,11 +16,8 @@
          app:icon_margin_left = "10"
          app:icon_text_margin = "10"
          app:arrow_margin_right = "10"
-         app:item_height = "40"
-         app:item_bg_color = "@color/white"
-         app:item_margin_top = "10"
-         app:line_color = "@color/colorPrimary"
-         app:first_item_margin_top = "10"
+         app:item_height = "50"
+         app:line_color = "@color/line_d6d6d6"
          >
 
      </com.maiml.baseui.BaseItemUI>

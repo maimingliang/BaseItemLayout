@@ -11,14 +11,9 @@
         <attr name="icon_text_margin" format="integer"/>
         <attr name="arrow_margin_right" format="integer"/>
         <attr name="item_height" format="integer"/>
-        <attr name="item_bg_color" format="color"/>
+         <attr name="line_color" format="color"/>
 
-
-        <attr name="item_margin_top" format="integer"/>
-        <attr name="line_color" format="color"/>
-
-        <attr name="first_item_margin_top" format="integer"/>
-    </declare-styleable>
+     </declare-styleable>
 
 
 

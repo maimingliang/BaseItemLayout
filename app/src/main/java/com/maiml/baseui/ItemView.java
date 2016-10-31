@@ -3,6 +3,7 @@ package com.maiml.baseui;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -18,29 +19,12 @@ public class ItemView extends RelativeLayout {
 
 
     private Context mContext;
-
-
-    private int textSize = 15;
-    private String text = "test";
-
-    private int textColor = R.color.gray_333333;
-    private int iconMarginLeft = 10;
-
-    private int iconTextMargin = 10;
-
-    private int arrowMarginRight =10;
-
-    private int itemHeight = 40;
-
-    private int itemBgColor = 0xffffffff;
-
-
-    private int iconResId = R.drawable.img_friends;
-
-    private int arrowResId = R.drawable.img_find_arrow;
     private ImageView iconImg;
     private TextView textView;
     private ImageView arrowImg;
+    private LayoutParams txtLp;
+    private LayoutParams iconLp;
+    private LayoutParams arrowLp;
 
     public ItemView(Context context) {
         this(context,null);
@@ -52,32 +36,7 @@ public class ItemView extends RelativeLayout {
 
     public ItemView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
-
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemAttrs);
-
-        textSize = a.getInt(R.styleable.ItemAttrs_text_size,textSize);
-         textColor = a.getColor(R.styleable.ItemAttrs_text_color,context.getResources().getColor(textColor));
-
-        iconMarginLeft = a.getInt(R.styleable.ItemAttrs_icon_margin_left,iconMarginLeft);
-        iconTextMargin = a.getInt(R.styleable.ItemAttrs_icon_text_margin,iconTextMargin);
-
-        arrowMarginRight = a.getInt(R.styleable.ItemAttrs_arrow_margin_right,arrowMarginRight);
-        itemHeight = a.getInt(R.styleable.ItemAttrs_item_height,itemHeight);
-        itemBgColor = a.getColor(R.styleable.ItemAttrs_item_bg_color,itemBgColor);
-
-
-        a.recycle();
-
-
         init(context);
-    }
-
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(widthMeasureSpec,DensityUtil.dip2px(mContext,itemHeight));
     }
 
 
@@ -85,57 +44,91 @@ public class ItemView extends RelativeLayout {
         this.mContext = context;
 
         iconImg = new ImageView(context);
-        iconImg.setBackgroundResource(iconResId);
-
         iconImg.setId(R.id.img_id);
 
         textView = new TextView(context);
-        textView.setText(text);
-        textView.setTextSize(DensityUtil.dip2px(context,textSize));
-//        textView.setTextColor(context.getResources().getColor(textColor));
-
         textView.setId(R.id.txt_id);
+
         arrowImg = new ImageView(context);
-        arrowImg.setBackgroundResource(arrowResId);
         arrowImg.setId(R.id.arrow_id);
 
-        RelativeLayout.LayoutParams lp1 = new RelativeLayout.LayoutParams
+        iconLp = new LayoutParams
                 (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        lp1.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+        iconLp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+        addView(iconImg, iconLp);
 
-        lp1.leftMargin = DensityUtil.dip2px(context,iconMarginLeft);
-         addView(iconImg,lp1);
-
-
-        RelativeLayout.LayoutParams lp2 = new RelativeLayout.LayoutParams
+        txtLp = new LayoutParams
                 (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        txtLp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+        txtLp.addRule(RelativeLayout.RIGHT_OF,R.id.img_id);
+         addView(textView, txtLp);
 
-        lp2.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
-        lp2.addRule(RelativeLayout.RIGHT_OF,R.id.img_id);
-        lp2.leftMargin = DensityUtil.dip2px(context,iconTextMargin);
-         addView(textView,lp2);
-
-        RelativeLayout.LayoutParams lp3 = new RelativeLayout.LayoutParams
+        arrowLp = new LayoutParams
                 (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        arrowLp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+        arrowLp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
+        addView(arrowImg, arrowLp);
 
-        lp3.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
-        lp3.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
-         lp3.rightMargin = DensityUtil.dip2px(context,arrowMarginRight);
-
-        addView(arrowImg,lp3);
-
-
-        setBackgroundColor(itemBgColor);
+        setBackgroundResource(R.drawable.btn_list_item_bg);
 
      }
 
 
+    public void setLayoutParams(int itemHeight) {
 
-    public void setItemValue(String text,int iconResId,int arrowResId){
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        layoutParams.height = DensityUtil.dip2px(mContext,itemHeight);
+        setLayoutParams(layoutParams);
+    }
+
+    /**
+     * 设置文字的样式
+     * @param text
+     */
+    public void setTextStyle(String text,int textSize,int textColor,int iconTextMargin){
+        txtLp.leftMargin = DensityUtil.dip2px(mContext,iconTextMargin);
         textView.setText(text);
-        iconImg.setBackgroundResource(iconResId);
-        arrowImg.setBackgroundResource(arrowResId);
+        textView.setTextColor(textColor);
+        textView.setTextSize(textSize);
+
+    }
+
+    /**
+     * 设置 icon 样式
+     * @param width 图片的宽度
+     * @param height 图片的高度
+     * @param resId 资源Id
+     */
+    public void setImageStyle(int width,int height,int resId,int iconMarginLeft){
+        iconLp.leftMargin = DensityUtil.dip2px(mContext,iconMarginLeft);
+
+        iconImg.setBackgroundResource(resId);
+
+        ViewGroup.LayoutParams layoutParams = iconImg.getLayoutParams();
+
+        layoutParams.width = DensityUtil.dip2px(mContext,width);
+        layoutParams.height = DensityUtil.dip2px(mContext,height);
+
+        iconImg.setLayoutParams(layoutParams);
+
+    }
+
+    /**
+     * 箭头的颜色
+     * @param resId 资源ID
+     * @param isShow 是否显示
+     */
+    public void setArrowStyle(int resId,boolean isShow ,int arrowMarginRight){
+
+        arrowLp.rightMargin = DensityUtil.dip2px(mContext,arrowMarginRight);
+
+        arrowImg.setImageResource(resId);
+        if(isShow){
+            arrowImg.setVisibility(VISIBLE);
+        }else{
+            arrowImg.setVisibility(GONE);
+        }
     }
 
 
