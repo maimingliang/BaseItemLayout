@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.maiml.baseitemlayoutlibrary.BaseItemLayout;
+import com.maiml.library.BaseItemLayout;
 
 import java.util.ArrayList;
 import java.util.List;

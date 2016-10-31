@@ -1,4 +1,4 @@
-package com.maiml.baseitemlayoutlibrary;
+package com.maiml.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 
-import com.maiml.baseitemlayoutlibrary.utils.DensityUtil;
+import com.maiml.baseitemlayoutlibrary.R;
+import com.maiml.library.utils.DensityUtil;
 
 import java.util.ArrayList;
 import java.util.List;

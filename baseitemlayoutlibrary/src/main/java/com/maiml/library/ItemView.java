@@ -1,4 +1,4 @@
-package com.maiml.baseitemlayoutlibrary;
+package com.maiml.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;

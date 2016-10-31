@@ -1,4 +1,4 @@
-package com.maiml.baseitemlayoutlibrary.utils;
+package com.maiml.library.utils;
 
 import android.content.Context;
 
