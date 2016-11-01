@@ -2,11 +2,20 @@
 
 #简介
 
-一个通用的Item布局。
+在工作中经常会遇到下面的一些布局，如图标红处：
 
-#效果图
+<div  align="center">    
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/image1.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/image2.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/image04.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/image05.png" width = "270" height = "480" alt="效果图" align=center />
 
-![这里写图片描述](https://github.com/maimingliang/BaseItemLayout/blob/master/image2.png)
+</div>
+
+ 
+因此自定义了一个通用的Item布局，只需几行代码就可以根据需要添加任意个item。
+ 
+
 
 
 
@@ -116,7 +125,7 @@
 
 #参数图解
 
-![这里写图片描述](https://github.com/maimingliang/BaseItemLayout/blob/master/image3.png)
+![这里写图片描述](https://github.com/maimingliang/BaseItemLayout/blob/master/image06.png)
 
 
 #关于我
@@ -127,5 +136,6 @@
 
 #最后
 
+如果遇到问题或者好的建议，请反馈到我的邮箱，maimingliang8@163.com
 
-如果觉得对你有用的话，点一下右上的星星赞一下吧!
+如果觉得对你有用的话，点一下Star赞一下吧!
