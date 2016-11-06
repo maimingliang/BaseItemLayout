@@ -87,8 +87,8 @@
               .setResIdList(resIdList) // icon list
               .setArrowResId(R.drawable.img_find_arrow) // 右边的箭头
               .setArrowIsShow(true) //是否显示右边的箭头
-              .setItemMarginTop(10)  //设置 每一个item 自己 margin
-              .setItemMarginTop(0,0) // 设置 position 下的item 的 margin
+              .setItemMarginTop(10)  //设置 item的边距（全部）
+              .setItemMarginTop(1,10) // 设置 某一个item 的边距
               .setIconHeight(24)    // icon 的高度
               .setIconWidth(24)      // icon 的宽度
              .create();
