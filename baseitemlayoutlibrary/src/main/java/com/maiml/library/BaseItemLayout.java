@@ -3,6 +3,7 @@ package com.maiml.library;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,7 @@ public class BaseItemLayout extends LinearLayout {
     /**
      * 是否显示 右边的箭头
      */
-    private boolean arrowIsShow = true;
+    private boolean arrowIsShow = false;
 
     /**
      * 字体的大小
@@ -71,6 +72,27 @@ public class BaseItemLayout extends LinearLayout {
      */
     private int itemHeight = 40;
 
+
+
+
+    /**
+     * 字体的大小
+     */
+    private int rightTextSize = 15;
+
+    /**
+     * 字体的颜色
+     */
+    private int rightTextColor = 0xff333333;
+
+
+    private int trunResId = 0;
+    private int upResId = 0;
+    /**
+     * 右边字体和箭头的间距
+     */
+    private int rightTextMagin = 10;
+
     /**
      *    TextView 的显示文字 按顺序 插入
      */
@@ -86,6 +108,14 @@ public class BaseItemLayout extends LinearLayout {
      */
     private SparseArray marginArray=new SparseArray<Integer>();
 
+
+    /**
+     *  item 的模式
+     */
+    private SparseArray<Mode> modeArray = new SparseArray<>();
+
+    private SparseArray<String> rightTextArray = new SparseArray<>();
+
     /**
      * 箭头的资源Id
      */
@@ -93,6 +123,10 @@ public class BaseItemLayout extends LinearLayout {
 
 
     private List<View> viewList = new ArrayList<>();
+
+
+    private static int DEFAULT_HEIGHT = 10;
+    private static int ZERO_HEIGHT = 0;
 
     public BaseItemLayout(Context context) {
         this(context,null);
@@ -113,8 +147,14 @@ public class BaseItemLayout extends LinearLayout {
         textColor = a.getColor(R.styleable.ItemAttrs_text_color,textColor);
         iconMarginLeft = a.getInt(R.styleable.ItemAttrs_icon_margin_left,iconMarginLeft);
         iconTextMargin = a.getInt(R.styleable.ItemAttrs_icon_text_margin,iconTextMargin);
-        arrowMarginRight = a.getInt(R.styleable.ItemAttrs_arrow_margin_right,arrowMarginRight);
+        arrowMarginRight = a.getInt(R.styleable.ItemAttrs_margin_right,arrowMarginRight);
         itemHeight = a.getInt(R.styleable.ItemAttrs_item_height,itemHeight);
+
+
+        rightTextSize = a.getInt(R.styleable.ItemAttrs_right_text_size,rightTextSize);
+        rightTextColor = a.getColor(R.styleable.ItemAttrs_right_text_color,rightTextColor);
+        rightTextMagin = a.getInt(R.styleable.ItemAttrs_right_text_margin,rightTextMagin);
+
         a.recycle();
         init(context);
     }
@@ -147,13 +187,48 @@ public class BaseItemLayout extends LinearLayout {
             ItemView itemView = new ItemView(mContext);
             itemView.setImageStyle(iconWidth,iconHeight, resIdList.get(i),iconMarginLeft);
             itemView.setTextStyle(valueList.get(i),textSize,textColor,iconTextMargin);
-            itemView.setArrowStyle(arrowResId,arrowIsShow,arrowMarginRight);
+            itemView.setArrowStyle(arrowResId,arrowMarginRight);
+
+            itemView.setRightTextStyle(rightTextArray.get(i),rightTextSize,rightTextColor,rightTextMagin,arrowResId);
+
             itemView.setLayoutParams(itemHeight);
+
+            itemView.setShowStyle(modeArray.get(i));
+
+            setSwitchImage(i, itemView);
+
             addItem(itemView,i);
 
         }
 
     }
+
+    private void setSwitchImage(final int i, ItemView itemView) {
+
+        if(modeArray.get(i) == Mode.BUTTON){
+
+           final SwitchImageView switchImageView = itemView.setSwitchImageViewStyle(trunResId, upResId, arrowMarginRight);
+
+            switchImageView.setOnSwitchClickListener(new SwitchImageView.OnSwitchClickListener() {
+                @Override
+                public void onClick(boolean isCheck) {
+
+                    if(isCheck){
+                        switchImageView.setImageResource(upResId);
+
+                    }else{
+                        switchImageView.setImageResource(trunResId);
+                    }
+                    if(onSwitchClickListener != null){
+                        onSwitchClickListener.onClick(i,isCheck);
+                    }
+                }
+            });
+
+
+        }
+    }
+
 
     /**
      * 添加 item
@@ -163,17 +238,17 @@ public class BaseItemLayout extends LinearLayout {
     private void addItem(ItemView view, final int pos){
 
 
-        if (marginArray.valueAt(pos) != null ) {
+        if (marginArray.get(pos) != null ) {
 
-            if((Integer) marginArray.valueAt(pos) > 0){
-                addView(createLineView((Integer) marginArray.valueAt(pos)));
+            if((Integer) marginArray.get(pos) > 0){
+                addView(createLineView((Integer) marginArray.get(pos)));
             }
 
         } else {
-            addView(createLineView(10));
+            addView(createLineView(DEFAULT_HEIGHT));
         }
         addView(view);
-        addView(createLineView(0));
+        addView(createLineView(ZERO_HEIGHT));
 
         if(onBaseItemClick != null){
             setListener(view,pos);
@@ -237,7 +312,6 @@ public class BaseItemLayout extends LinearLayout {
         return this;
     }
 
-
     public BaseItemLayout setItemMarginTop(int value){
 
         if(valueList.size() <= 0){
@@ -249,6 +323,52 @@ public class BaseItemLayout extends LinearLayout {
         }
         return this;
     }
+
+
+    public BaseItemLayout setItemMode(Mode value){
+
+        if(valueList.size() <= 0){
+            throw  new RuntimeException("values is null");
+        }
+
+        for(int i = 0 ;i<valueList.size();i++){
+            modeArray.put(i,value);
+        }
+        return this;
+    }
+
+    public BaseItemLayout setItemMode(int index, Mode value){
+        modeArray.put(index,value);
+        return this;
+    }
+
+    public BaseItemLayout setItemMode(int index, Mode value,String text){
+        modeArray.put(index,value);
+        rightTextArray.put(index,text);
+         Log.e("indext",index +"----->"+ text);
+        return this;
+    }
+
+
+    public BaseItemLayout setItemRightText(List<String> values){
+
+        if(values == null){
+            throw  new RuntimeException("values is null");
+        }
+
+        if(values.size() <= 0){
+            throw  new RuntimeException("");
+        }
+
+        for(int i = 0 ;i<values.size();i++){
+             rightTextArray.put(i,values.get(i));
+        }
+        return this;
+    }
+
+
+
+
 
 
     public BaseItemLayout setValueList(List<String> valueList) {
@@ -266,6 +386,15 @@ public class BaseItemLayout extends LinearLayout {
         return this;
     }
 
+    public BaseItemLayout setTrunResId(int trunResId) {
+        this.trunResId = trunResId;
+        return this;
+    }
+    public BaseItemLayout setUpResId(int upResId) {
+        this.upResId = upResId;
+        return this;
+    }
+
     public BaseItemLayout setIconWidth(int iconWidth) {
         this.iconWidth = iconWidth;
         return this;
@@ -276,12 +405,14 @@ public class BaseItemLayout extends LinearLayout {
         return this;
     }
 
-    public BaseItemLayout setArrowIsShow(boolean arrowIsShow) {
-        this.arrowIsShow = arrowIsShow;
-        return this;
-    }
+
+
+
+
+
 
     //=================================监听事件====================================
+
     private OnBaseItemClick onBaseItemClick;
 
     public void setOnBaseItemClick(OnBaseItemClick onBaseItemClick) {
@@ -289,11 +420,35 @@ public class BaseItemLayout extends LinearLayout {
         setOnClick();
     }
 
-
-
     public interface OnBaseItemClick{
 
         void onItemClick(int position);
     }
+
+
+    private OnSwitchClickListener onSwitchClickListener;
+
+    public void setOnSwitchClickListener(OnSwitchClickListener onSwitchClickListener) {
+        this.onSwitchClickListener = onSwitchClickListener;
+    }
+
+    public interface OnSwitchClickListener{
+
+        void onClick(int position,boolean isCheck);
+    }
+
+
+
+    public enum Mode {
+
+        TXT,
+        IMAGE,
+        DEFAULT,
+        BUTTON
+
+
+    }
+
+
 
 }

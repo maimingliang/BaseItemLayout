@@ -9,10 +9,13 @@
         <attr name="text_color" format="color"/>
          <attr name="icon_margin_left" format="integer"/>
         <attr name="icon_text_margin" format="integer"/>
-        <attr name="arrow_margin_right" format="integer"/>
+        <attr name="margin_right" format="integer"/>
         <attr name="item_height" format="integer"/>
          <attr name="line_color" format="color"/>
 
+        <attr name="right_text_size" format="integer"/>
+        <attr name="right_text_color" format="color"/>
+        <attr name="right_text_margin" format="integer"/>
      </declare-styleable>
 
 

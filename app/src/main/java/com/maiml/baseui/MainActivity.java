@@ -22,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
         layout = (BaseItemLayout) findViewById(R.id.layout);
 
         initData();
+
     }
+
 
     private void initData() {
 
@@ -43,21 +45,45 @@ public class MainActivity extends AppCompatActivity {
         resIdList.add(R.drawable.sz);
 
 
-        layout.setValueList(valueList)
-              .setResIdList(resIdList)
-              .setArrowResId(R.drawable.img_find_arrow)
-                .setArrowIsShow(false)
-                .setItemMarginTop(10)
-                .setItemMarginTop(0,0)
-                .setIconHeight(24)
-                .setIconWidth(24)
-             .create();
+        List<String> rightTextList = new ArrayList<>();
+
+        rightTextList.add("test1");
+        rightTextList.add("test2");
+        rightTextList.add("test3");
+        rightTextList.add("test4");
+        rightTextList.add("test5");
+
+        layout.setValueList(valueList) // 文字list
+              .setResIdList(resIdList) // icon list
+              .setArrowResId(R.drawable.img_find_arrow) // 右边的箭头
+//                .setItemMarginTop(10)  //设置 每一个item 自己 margin
+//                .setItemMarginTop(0,0) // 设置 position 下的item 的 margin
+//                .setIconHeight(24)    // icon 的高度
+//                .setIconWidth(24)      // icon 的宽度
+                .setItemMode(BaseItemLayout.Mode.IMAGE)
+                .setItemRightText(rightTextList)
+                .setTrunResId(R.drawable.img_turn_down)
+                .setUpResId(R.drawable.img_up)
+//                .setItemRightText(rightTextList)
+                .setItemMode(valueList.size()-3, BaseItemLayout.Mode.TXT,"TEXT1")
+
+                .setItemMode(valueList.size()-2, BaseItemLayout.Mode.BUTTON)
+                .setItemMode(valueList.size()-1, BaseItemLayout.Mode.BUTTON)
+              .create();
 
 
         layout.setOnBaseItemClick(new BaseItemLayout.OnBaseItemClick() {
             @Override
             public void onItemClick(int position) {
                 Log.e(TAG,"----- position = " + position);
+            }
+        });
+
+
+        layout.setOnSwitchClickListener(new BaseItemLayout.OnSwitchClickListener() {
+            @Override
+            public void onClick(int position, boolean isCheck) {
+                Log.e(TAG,"-----> position = " + position +" isCheck = " + isCheck);
             }
         });
 

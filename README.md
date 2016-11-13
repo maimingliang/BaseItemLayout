@@ -41,24 +41,32 @@
 
 ```code
 
- <com.maiml.library.BaseItemLayout
+   <com.maiml.library.BaseItemLayout
          android:id="@+id/layout"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         app:text_size  = "15"
+         app:text_size  = "18"
          app:text_color = "@color/gray_333333"
          app:icon_margin_left = "10"
          app:icon_text_margin = "10"
          app:arrow_margin_right = "10"
          app:item_height = "50"
          app:line_color = "@color/line_d6d6d6"
+         app:right_text_size = "@color/line_d6d6d6"
+         app:right_text_color  = "@color/gray_333333"
+         app:right_text_margin = "10"
+
          >
 
      </com.maiml.library.BaseItemLayout>
 
+
 ```
 
 3. 代码中调用
+
+* 默认
+
 
 ```code
 
@@ -82,20 +90,201 @@
         resIdList.add(R.drawable.sz);
 
 
+        layout.setValueList(valueList) // 文字 list
+              .setResIdList(resIdList) // icon list
+             .create();
+
+
+```
+
+![这里写图片描述](https://github.com/maimingliang/BaseItemLayout/blob/master/new08.png)
+
+
+* 设置item 与 item 之间的间距
+
+```code
 
         layout.setValueList(valueList) // 文字 list
               .setResIdList(resIdList) // icon list
-              .setArrowResId(R.drawable.img_find_arrow) // 右边的箭头
-              .setArrowIsShow(true) //是否显示右边的箭头
-              .setItemMarginTop(10)  //设置 每一个item 自己 margin
-              .setItemMarginTop(0,0) // 设置 position 下的item 的 margin
+              .setItemMarginTop(10)  //设置 全部item的间距
+              .setItemMarginTop(1,20) // 设置 position 下的item 的 间距
+             .create();
+
+
+```
+
+
+* 设置icon 图标的大小
+
+
+```code
+
+        layout.setValueList(valueList) // 文字 list
+              .setResIdList(resIdList) // icon list
+              .setItemMarginTop(10)  //设置 全部item的间距
+              .setItemMarginTop(1,20) // 设置 position 下的item 的 间距
               .setIconHeight(24)    // icon 的高度
               .setIconWidth(24)      // icon 的宽度
              .create();
 
 
-
 ```
+
+
+
+* 设置 item 的右边的显示模式（默认什么都不显示）
+
+    1. Mode.TXT  //箭头左边带有文字
+
+  ```code
+
+
+  List<String> rightTextList = new ArrayList<>();
+
+        rightTextList.add("test1");
+        rightTextList.add("test2");
+        rightTextList.add("test3");
+        rightTextList.add("test4");
+        rightTextList.add("test5");
+
+
+          layout.setValueList(valueList) // 文字 list
+                .setResIdList(resIdList) // icon list
+                .setItemMarginTop(10)  //设置 全部item的间距
+                .setItemMarginTop(1,20) // 设置 position 下的item 的 间距
+                .setIconHeight(24)    // icon 的高度
+                .setIconWidth(24)      // icon 的宽度
+                .setItemMode(BaseItemLayout.Mode.TXT) // 设置显示模式
+                .setItemRightText(rightTextList)  // 只有在Mode.TXT 才需要设置改值
+
+               .create();
+
+
+  ```
+![这里写图片描述](https://github.com/maimingliang/BaseItemLayout/blob/master/new07.png)
+
+
+   2. Mode.IMAGE //箭头
+
+ ```code
+
+        List<String> rightTextList = new ArrayList<>();
+
+        rightTextList.add("test1");
+        rightTextList.add("test2");
+        rightTextList.add("test3");
+        rightTextList.add("test4");
+        rightTextList.add("test5");
+
+
+          layout.setValueList(valueList) // 文字 list
+                .setResIdList(resIdList) // icon list
+                .setItemMarginTop(10)  //设置 全部item的间距
+                .setItemMarginTop(1,20) // 设置 position 下的item 的 间距
+                .setIconHeight(24)    // icon 的高度
+                .setIconWidth(24)      // icon 的宽度
+                .setItemMode(BaseItemLayout.Mode.IMAGE) // 设置显示模式
+
+               .create();
+
+
+  ```
+
+![这里写图片描述](https://github.com/maimingliang/BaseItemLayout/blob/master/new06.png)
+
+
+   3. Mode.BUTTON //button
+
+    ```code
+
+           List<String> rightTextList = new ArrayList<>();
+
+           rightTextList.add("test1");
+           rightTextList.add("test2");
+           rightTextList.add("test3");
+           rightTextList.add("test4");
+           rightTextList.add("test5");
+
+
+             layout.setValueList(valueList) // 文字 list
+                   .setResIdList(resIdList) // icon list
+                   .setItemMarginTop(10)  //设置 全部item的间距
+                   .setItemMarginTop(1,20) // 设置 position 下的item 的 间距
+                   .setIconHeight(24)    // icon 的高度
+                   .setIconWidth(24)      // icon 的宽度
+                    .setItemMode(BaseItemLayout.Mode.BUTTON) // 设置显示模式
+                   .setTrunResId(R.drawable.img_turn_down)  //设置未选中图片
+                   .setUpResId(R.drawable.img_up)           ／/设置选中图片
+                  .create();
+
+
+     ```
+![这里写图片描述](https://github.com/maimingliang/BaseItemLayout/blob/master/new04.png)
+
+
+   4. Mode.IMAGE 和 Mode.TXT 混合 或 Mode.IMAGE 和 Mode.BUTTON 混合 或 Mode.TXT 和 Mode.BUTTON 混合
+
+    ```code
+
+           List<String> rightTextList = new ArrayList<>();
+
+           rightTextList.add("test1");
+           rightTextList.add("test2");
+           rightTextList.add("test3");
+           rightTextList.add("test4");
+           rightTextList.add("test5");
+
+
+             layout.setValueList(valueList) // 文字 list
+                   .setResIdList(resIdList) // icon list
+                   .setItemMarginTop(10)  //设置 全部item的间距
+                   .setItemMarginTop(1,20) // 设置 position 下的item 的 间距
+                   .setIconHeight(24)    // icon 的高度
+                   .setIconWidth(24)      // icon 的宽度
+                   .setItemMode(BaseItemLayout.Mode.IMAGE) //设置全部item 为 Mode.IMAGE 模式
+                   .setItemMode(valueList.size()-2, BaseItemLayout.Mode.TXT,"text1") //改变 倒数第二个位置 模式为 Mode.TXT
+                   .setItemMode(valueList.size()-1, BaseItemLayout.Mode.TXT,"text2") //改变 最后一个位置 模式为 Mode.TXT
+
+
+                   //.setItemMode(BaseItemLayout.Mode.IMAGE)
+                   //.setTrunResId(R.drawable.img_turn_down)
+                   //.setUpResId(R.drawable.img_up)
+                   //.setItemMode(valueList.size()-2, BaseItemLayout.Mode.BUTTON)
+                   //.setItemMode(valueList.size()-1, BaseItemLayout.Mode.BUTTON)
+
+
+
+                   //.setItemMode(BaseItemLayout.Mode.TXT)
+                   //.setItemRightText(rightTextList)  // 只有在Mode.TXT 才需要设置改值
+                   //.setTrunResId(R.drawable.img_turn_down)
+                   //.setUpResId(R.drawable.img_up)
+                   //.setItemMode(valueList.size()-2, BaseItemLayout.Mode.BUTTON)
+                   //.setItemMode(valueList.size()-1, BaseItemLayout.Mode.BUTTON)
+
+                   //.setItemMode(BaseItemLayout.Mode.IMAGE)
+                    //.setTrunResId(R.drawable.img_turn_down)
+                   //.setUpResId(R.drawable.img_up)
+                   //.setItemMode(valueList.size()-3, BaseItemLayout.Mode.TXT,"text1") //改变 倒数第二个位置 模式为 Mode.TXT
+
+                   //.setItemMode(valueList.size()-2, BaseItemLayout.Mode.BUTTON)
+                   //.setItemMode(valueList.size()-1, BaseItemLayout.Mode.BUTTON)
+
+
+                   .create();
+
+
+     ```
+
+<div  align="center">
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new05.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new03.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new02.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new01.png" width = "270" height = "480" alt="效果图" align=center />
+
+</div>
+
+
+
 
 4. 设置监听事件
 
@@ -121,7 +310,9 @@
 | arrow_margin_right| integer|箭头距离右边的margin
 | item_height| integer| item的高度
 | line_color| color| 线的颜色
-
+| right_text_size| integer|右边字体大小
+| right_text_color| color| 右边字体颜色
+| right_text_margin| integer| 右边字体与箭头的间距
 
 #参数图解
 

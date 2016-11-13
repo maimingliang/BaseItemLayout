@@ -1,10 +1,12 @@
 package com.maiml.library;
 
 import android.content.Context;
-import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,6 +29,11 @@ public class ItemView extends RelativeLayout {
     private LayoutParams txtLp;
     private LayoutParams iconLp;
     private LayoutParams arrowLp;
+    private TextView rightTextView;
+    private LayoutParams rightTextViewlp;
+    private SwitchImageView switchImageView;
+    private LayoutParams switchCblp;
+
 
     public ItemView(Context context) {
         this(context,null);
@@ -45,6 +52,65 @@ public class ItemView extends RelativeLayout {
     private void init(Context context){
         this.mContext = context;
 
+        createWidget(context);
+
+        createWidgetLayoutParams();
+
+        addWidget();
+
+        setBackgroundResource(R.drawable.btn_list_item_bg);
+
+
+
+     }
+
+    private void addWidget() {
+        addView(textView, txtLp);
+        addView(iconImg, iconLp);
+        addView(arrowImg, arrowLp);
+        addView(rightTextView,rightTextViewlp);
+        addView(switchImageView,switchCblp);
+    }
+
+    /**
+     * 创建item 中没一个控件的  layotParams
+     */
+    private void createWidgetLayoutParams() {
+        iconLp = new LayoutParams
+                (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        iconLp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+
+        txtLp = new LayoutParams
+                (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        txtLp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+        txtLp.addRule(RelativeLayout.RIGHT_OF, R.id.img_id);
+
+
+        arrowLp = new LayoutParams
+                (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        arrowLp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+        arrowLp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
+
+
+        rightTextViewlp = new LayoutParams
+                (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        rightTextViewlp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+        rightTextViewlp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
+
+
+        switchCblp = new LayoutParams
+                (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        switchCblp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+        switchCblp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
+    }
+
+    /**
+     * 创建item 中的控件
+     * @param context
+     */
+
+    private void createWidget(Context context) {
         iconImg = new ImageView(context);
         iconImg.setId(R.id.img_id);
 
@@ -54,27 +120,14 @@ public class ItemView extends RelativeLayout {
         arrowImg = new ImageView(context);
         arrowImg.setId(R.id.arrow_id);
 
-        iconLp = new LayoutParams
-                (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        rightTextView = new TextView(context);
 
-        iconLp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
-        addView(iconImg, iconLp);
+        rightTextView.setId(R.id.right_text_id);
 
-        txtLp = new LayoutParams
-                (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        txtLp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
-        txtLp.addRule(RelativeLayout.RIGHT_OF,R.id.img_id);
-         addView(textView, txtLp);
 
-        arrowLp = new LayoutParams
-                (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        arrowLp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
-        arrowLp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
-        addView(arrowImg, arrowLp);
+        switchImageView = new SwitchImageView(context);
 
-        setBackgroundResource(R.drawable.btn_list_item_bg);
-
-     }
+    }
 
 
     public void setLayoutParams(int itemHeight) {
@@ -137,6 +190,112 @@ public class ItemView extends RelativeLayout {
             arrowImg.setVisibility(GONE);
         }
     }
+    /**
+     * 箭头的
+     * @param resId 资源ID
+     *
+     */
+    public void setArrowStyle(int resId,int arrowMarginRight){
+
+        if(resId == 0){
+            arrowImg.setVisibility(GONE);
+            return;
+        }
+
+        arrowLp.rightMargin = DensityUtil.dip2px(mContext,arrowMarginRight);
+
+        arrowImg.setImageResource(resId);
+
+    }
+
+    /**
+     * 设置文字的样式
+     * @param text
+     */
+    public void setRightTextStyle(String text,int textSize,int textColor,int arrowMarginRight,int arrowResId){
 
 
+        if(text == null || text.equals("")){
+            text = "";
+        }
+        rightTextViewlp.rightMargin = DensityUtil.dip2px(mContext,arrowMarginRight);
+        rightTextView.setText(text);
+        rightTextView.setTextColor(textColor);
+        rightTextView.setTextSize(textSize);
+
+        if(arrowResId == 0){
+            return;
+        }
+
+        Drawable drawable= getResources().getDrawable(arrowResId);
+        /// 这一步必须要做,否则不会显示.
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        rightTextView.setCompoundDrawables(null,null,drawable,null);
+        rightTextView.setCompoundDrawablePadding(20);
+
+
+    }
+
+    /**
+     * 设置文字的样式
+     * @param text
+     */
+    public void setRightTextStyle(String text,int textSize,int textColor,int arrowMarginRight){
+
+        rightTextViewlp.rightMargin = DensityUtil.dip2px(mContext,arrowMarginRight);
+        rightTextView.setText(text);
+        rightTextView.setTextColor(textColor);
+        rightTextView.setTextSize(textSize);
+
+
+    }
+
+    public SwitchImageView setSwitchImageViewStyle(final int trunResId, final int upresId,int arrowMarginRight){
+
+
+        if(trunResId == 0 || upresId == 0){
+            throw new RuntimeException("turnResId or upResId is not set");
+        }
+
+
+        switchCblp.rightMargin = DensityUtil.dip2px(mContext,arrowMarginRight);
+
+        switchImageView.setImageResource(trunResId);
+
+
+        return switchImageView;
+    }
+
+    public void setShowStyle(BaseItemLayout.Mode mode){
+
+        hideRightAllType();
+
+        if(mode == null){
+            mode = BaseItemLayout.Mode.DEFAULT;
+        }
+        if(mode == BaseItemLayout.Mode.IMAGE){
+            arrowImg.setVisibility(VISIBLE);
+        }else if(mode == BaseItemLayout.Mode.TXT){
+            rightTextView.setVisibility(VISIBLE);
+        }else if(mode == BaseItemLayout.Mode.BUTTON){
+            switchImageView.setVisibility(VISIBLE);
+        }
+
+    }
+
+    /**
+     * 隐藏右边全部类型的控件
+     */
+    private void hideRightAllType() {
+        arrowImg.setVisibility(GONE);
+        rightTextView.setVisibility(GONE);
+        switchImageView.setVisibility(GONE);
+    }
+
+
+     private BaseItemLayout.OnSwitchClickListener onSwitchClickListener;
+
+    public BaseItemLayout.OnSwitchClickListener getOnSwitchClickListener() {
+        return onSwitchClickListener;
+    }
 }
