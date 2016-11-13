@@ -297,6 +297,14 @@
             }
         });
 
+
+     layout.setOnSwitchClickListener(new BaseItemLayout.OnSwitchClickListener() {
+                    @Override
+                    public void onClick(int position, boolean isCheck) {
+                        Log.e(TAG,"-----> position = " + position +" isCheck = " + isCheck);
+                    }
+                });
+
 ```
 
 #参数说明
