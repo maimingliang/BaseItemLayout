@@ -97,7 +97,7 @@
 
 ```
 
-<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new08.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new08.jpg" width = "270" height = "480" alt="效果图" align=center />
 
 
 * 设置item 与 item 之间的间距
@@ -161,7 +161,7 @@
 
 
   ```
-<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new07.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new07.jpg" width = "270" height = "480" alt="效果图" align=center />
 
 
    2. Mode.IMAGE //箭头
@@ -189,7 +189,7 @@
 
 
   ```
-<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new06.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new06.jpg" width = "270" height = "480" alt="效果图" align=center />
 
 
    3. Mode.BUTTON //button
@@ -218,7 +218,7 @@
 
 
      ```
-<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new04.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new04.jpg" width = "270" height = "480" alt="效果图" align=center />
 
 
    4. Mode.IMAGE 和 Mode.TXT 混合 或 Mode.IMAGE 和 Mode.BUTTON 混合 或 Mode.TXT 和 Mode.BUTTON 混合
