@@ -13,7 +13,7 @@
 </div>
 
  
-因此自定义了一个通用的Item布局，只需几行代码就可以根据需要添加任意个item。
+因此自定义了一个通用的Item布局，只需一行代码就可以根据需要添加任意个item。
  
 
 
@@ -30,7 +30,9 @@
     dependencies {
 
          ...
-         compile 'com.maiml:baseitemlayoutlibrary:1.0.0'
+         //compile 'com.maiml:baseitemlayoutlibrary:1.0.0'//旧版本，如果有使用该版本的，由于新版本改动比较大，强烈建议升级。
+
+         compile 'com.maiml:baseitemlayoutlibrary:2.0.0'
 
     }
 
