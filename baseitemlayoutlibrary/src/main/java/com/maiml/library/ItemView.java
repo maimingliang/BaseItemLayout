@@ -240,13 +240,9 @@ public class ItemView extends RelativeLayout {
      * 设置文字的样式
      * @param text
      */
-    public void setRightTextStyle(String text,int textSize,int textColor,int arrowMarginRight){
+    public void setRightText(String text){
 
-        rightTextViewlp.rightMargin = DensityUtil.dip2px(mContext,arrowMarginRight);
-        rightTextView.setText(text);
-        rightTextView.setTextColor(textColor);
-        rightTextView.setTextSize(textSize);
-
+         rightTextView.setText(text);
 
     }
 

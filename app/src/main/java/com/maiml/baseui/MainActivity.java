@@ -60,16 +60,20 @@ public class MainActivity extends AppCompatActivity {
 //                .setItemMarginTop(0,0) // 设置 position 下的item 的 margin
 //                .setIconHeight(24)    // icon 的高度
 //                .setIconWidth(24)      // icon 的宽度
-                .setItemMode(BaseItemLayout.Mode.IMAGE)
-                .setItemRightText(rightTextList)
-                .setTrunResId(R.drawable.img_turn_down)
-                .setUpResId(R.drawable.img_up)
+                .setItemMode(BaseItemLayout.Mode.TXT)
 //                .setItemRightText(rightTextList)
-                .setItemMode(valueList.size()-3, BaseItemLayout.Mode.TXT,"TEXT1")
-
-                .setItemMode(valueList.size()-2, BaseItemLayout.Mode.BUTTON)
-                .setItemMode(valueList.size()-1, BaseItemLayout.Mode.BUTTON)
+//                .setTrunResId(R.drawable.img_turn_down)
+//                .setUpResId(R.drawable.img_up)
+////                .setItemRightText(rightTextList)
+//                .setItemMode(valueList.size()-3, BaseItemLayout.Mode.TXT,"TEXT1")
+//
+//                .setItemMode(valueList.size()-2, BaseItemLayout.Mode.BUTTON)
+//                .setItemMode(valueList.size()-1, BaseItemLayout.Mode.BUTTON)
               .create();
+
+
+
+        layout.setRightText(2,"test");
 
 
         layout.setOnBaseItemClick(new BaseItemLayout.OnBaseItemClick() {

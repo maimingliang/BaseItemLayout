@@ -367,6 +367,12 @@ public class BaseItemLayout extends LinearLayout {
     }
 
 
+    public void setRightText(int position,String text){
+        rightTextArray.put(position,text);
+        ItemView view = (ItemView) viewList.get(position);
+        view.setRightText(text);
+
+    }
 
 
 
