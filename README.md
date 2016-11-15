@@ -32,7 +32,7 @@
          ...
          //compile 'com.maiml:baseitemlayoutlibrary:1.0.0'//旧版本，如果有使用该版本的，由于新版本改动比较大，强烈建议升级。
 
-         compile 'com.maiml:baseitemlayoutlibrary:2.0.0'
+         compile 'com.maiml:baseitemlayoutlibrary:2.1.1'
 
     }
 
