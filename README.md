@@ -43,7 +43,7 @@
 
 ```code
 
-   <com.maiml.library.BaseItemLayout
+  <com.maiml.library.BaseItemLayout
          android:id="@+id/layout"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
          app:text_color = "@color/gray_333333"
          app:icon_margin_left = "10"
          app:icon_text_margin = "10"
-         app:arrow_margin_right = "10"
+         app:margin_right = "10"
          app:item_height = "50"
          app:line_color = "@color/line_d6d6d6"
          app:right_text_size = "@color/line_d6d6d6"
@@ -61,6 +61,7 @@
          >
 
      </com.maiml.library.BaseItemLayout>
+
 
 
 ```
