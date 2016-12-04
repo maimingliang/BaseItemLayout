@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.maiml.library.BaseItemLayout;
+import com.maiml.library.BaseItemLayout2;
+import com.maiml.library.Mode;
+import com.maiml.library.config.ConfigAttrs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +15,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private BaseItemLayout layout;
+    private BaseItemLayout2 layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        layout = (BaseItemLayout) findViewById(R.id.layout);
+        layout = (BaseItemLayout2) findViewById(R.id.layout);
 
         initData();
 
@@ -53,41 +56,35 @@ public class MainActivity extends AppCompatActivity {
         rightTextList.add("test4");
         rightTextList.add("test5");
 
-        layout.setValueList(valueList) // 文字list
-              .setResIdList(resIdList) // icon list
-              .setArrowResId(R.drawable.img_find_arrow) // 右边的箭头
-//                .setItemMarginTop(10)  //设置 每一个item 自己 margin
-//                .setItemMarginTop(0,0) // 设置 position 下的item 的 margin
-//                .setIconHeight(24)    // icon 的高度
-//                .setIconWidth(24)      // icon 的宽度
-                .setItemMode(BaseItemLayout.Mode.TXT)
-//                .setItemRightText(rightTextList)
-//                .setTrunResId(R.drawable.img_turn_down)
-//                .setUpResId(R.drawable.img_up)
+//        layout.setValueList(valueList) // 文字list
+//              .setResIdList(resIdList) // icon list
+//              .setArrowResId(R.drawable.img_find_arrow) // 右边的箭头
+////                .setItemMarginTop(10)  //设置 每一个item 自己 margin
+////                .setItemMarginTop(0,0) // 设置 position 下的item 的 margin
+////                .setIconHeight(24)    // icon 的高度
+////                .setIconWidth(24)      // icon 的宽度
+//                .setItemMode(BaseItemLayout.Mode.TXT)
 ////                .setItemRightText(rightTextList)
-//                .setItemMode(valueList.size()-3, BaseItemLayout.Mode.TXT,"TEXT1")
-//
-//                .setItemMode(valueList.size()-2, BaseItemLayout.Mode.BUTTON)
-//                .setItemMode(valueList.size()-1, BaseItemLayout.Mode.BUTTON)
+////                .setTrunResId(R.drawable.img_turn_down)
+////                .setUpResId(R.drawable.img_up)
+//////                .setItemRightText(rightTextList)
+////                .setItemMode(valueList.size()-3, BaseItemLayout.Mode.TXT,"TEXT1")
+////
+////                .setItemMode(valueList.size()-2, BaseItemLayout.Mode.BUTTON)
+////                .setItemMode(valueList.size()-1, BaseItemLayout.Mode.BUTTON)
+
+        ConfigAttrs attrs = new ConfigAttrs();
+        attrs.setValueList(valueList).setResIdList(resIdList).setItemMode(Mode.NORMAL).setIconHeight(24).setIconWidth(24);
+
+        layout.setConfigAttrs(attrs)
               .create();
 
 
 
-        layout.setRightText(2,"test");
-
-
-        layout.setOnBaseItemClick(new BaseItemLayout.OnBaseItemClick() {
+        layout.setOnBaseItemClick(new BaseItemLayout2.OnBaseItemClick() {
             @Override
             public void onItemClick(int position) {
-                Log.e(TAG,"----- position = " + position);
-            }
-        });
-
-
-        layout.setOnSwitchClickListener(new BaseItemLayout.OnSwitchClickListener() {
-            @Override
-            public void onClick(int position, boolean isCheck) {
-                Log.e(TAG,"-----> position = " + position +" isCheck = " + isCheck);
+                Log.e("click","---> " +position);
             }
         });
 

@@ -62,6 +62,10 @@ public class BaseItemLayout extends LinearLayout {
      */
     private int iconTextMargin = 10;
 
+
+
+
+
     /**
      * 箭头距离 最右边 的 marginRight 大小
      */
@@ -149,8 +153,6 @@ public class BaseItemLayout extends LinearLayout {
         iconTextMargin = a.getInt(R.styleable.ItemAttrs_icon_text_margin,iconTextMargin);
         arrowMarginRight = a.getInt(R.styleable.ItemAttrs_margin_right,arrowMarginRight);
         itemHeight = a.getInt(R.styleable.ItemAttrs_item_height,itemHeight);
-
-
         rightTextSize = a.getInt(R.styleable.ItemAttrs_right_text_size,rightTextSize);
         rightTextColor = a.getColor(R.styleable.ItemAttrs_right_text_color,rightTextColor);
         rightTextMagin = a.getInt(R.styleable.ItemAttrs_right_text_margin,rightTextMagin);
