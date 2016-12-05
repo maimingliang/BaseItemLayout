@@ -10,6 +10,7 @@ public enum  Mode {
     NORMAL,
     ARROW,
     BOTTON,
+    TEXT,
     MIX;
 
 }

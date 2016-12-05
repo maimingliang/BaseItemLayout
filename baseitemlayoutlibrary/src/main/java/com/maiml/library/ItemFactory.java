@@ -6,6 +6,7 @@ import android.util.Log;
 import com.maiml.library.Item.ArrowItem;
 import com.maiml.library.Item.ButtonItem;
 import com.maiml.library.Item.NormalItem;
+import com.maiml.library.Item.TextItem;
 import com.maiml.library.config.ConfigAttrs;
 import com.maiml.library.utils.AbstractItem;
 
@@ -43,6 +44,8 @@ public class ItemFactory extends AbstractItemFactory {
             }else if(mode == Mode.BOTTON){
 
                 item = new ButtonItem(mContext);
+            }else if(mode == Mode.TEXT){
+                item = new TextItem(mContext);
             }
 
 

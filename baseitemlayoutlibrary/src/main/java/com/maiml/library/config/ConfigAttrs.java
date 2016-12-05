@@ -81,6 +81,9 @@ public  class ConfigAttrs {
      */
     private int arrowResId;
 
+
+    private int textArrowResId;
+
     /**
      * 字体的大小
      */
@@ -121,7 +124,14 @@ public  class ConfigAttrs {
     private SparseArray<String> rightTextArray = new SparseArray<>();
 
 
+    public int getTextArrowResId() {
+        return textArrowResId;
+    }
 
+    public ConfigAttrs setTextArrowResId(int textArrowResId) {
+        this.textArrowResId = textArrowResId;
+        return this;
+    }
 
     public int getPosition() {
         return position;
@@ -316,15 +326,9 @@ public  class ConfigAttrs {
         return this;
     }
 
-    public ConfigAttrs setItemMode(int index, Mode value, String text){
-        modeArray.put(index,value);
-        rightTextArray.put(index,text);
-        Log.e("indext",index +"----->"+ text);
-        return this;
-    }
 
 
-    public ConfigAttrs setItemRightText(List<String> values){
+    public ConfigAttrs setRightText(List<String> values){
 
         if(values == null){
             throw  new RuntimeException("values is null");
@@ -341,6 +345,11 @@ public  class ConfigAttrs {
         return this;
     }
 
+    public ConfigAttrs setRightText(int position,String text){
+
+        rightTextArray.put(position,text);
+        return this;
+    }
 
 
 

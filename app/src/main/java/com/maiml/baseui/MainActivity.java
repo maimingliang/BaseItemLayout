@@ -74,7 +74,19 @@ public class MainActivity extends AppCompatActivity {
 ////                .setItemMode(valueList.size()-1, BaseItemLayout.Mode.BUTTON)
 
         ConfigAttrs attrs = new ConfigAttrs();
-        attrs.setValueList(valueList).setResIdList(resIdList).setItemMode(Mode.NORMAL).setIconHeight(24).setIconWidth(24);
+        attrs.setValueList(valueList)
+                .setResIdList(resIdList)
+                .setItemMode(Mode.NORMAL)
+                .setItemMode(2,Mode.BOTTON)
+                .setItemMode(3,Mode.BOTTON)
+                .setTrunResId(R.drawable.img_turn_down)
+                .setUpResId(R.drawable.img_up)
+                .setArrowResId(R.drawable.img_find_arrow).
+                setIconHeight(24)
+                .setIconWidth(24)
+                .setRightText(4,"love u")
+                .setItemMode(4,Mode.TEXT)
+        ;
 
         layout.setConfigAttrs(attrs)
               .create();
@@ -85,6 +97,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Log.e("click","---> " +position);
+            }
+        });
+
+
+        layout.setOnSwitchClickListener(new BaseItemLayout2.OnSwitchClickListener() {
+            @Override
+            public void onClick(int position, boolean isCheck) {
+                Log.e("switch",position +"  " + isCheck);
             }
         });
 

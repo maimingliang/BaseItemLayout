@@ -40,6 +40,10 @@ public class SwitchImageView extends ImageView {
                 if(onSwitchClickListener != null){
                     onSwitchClickListener.onClick(isCheck);
                 }
+
+
+
+
             }
         });
 

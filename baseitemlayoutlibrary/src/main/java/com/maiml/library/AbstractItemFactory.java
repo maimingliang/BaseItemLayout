@@ -18,5 +18,7 @@ public abstract class AbstractItemFactory {
     public AbstractItemFactory(Context context){
         this.mContext = context;
     }
+
+
     public abstract  <T extends AbstractItem> T createItem(Mode mode, ConfigAttrs attrs);
 }

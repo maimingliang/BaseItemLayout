@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.maiml.baseitemlayoutlibrary.R;
+import com.maiml.library.Item.ButtonItem;
 import com.maiml.library.Item.NormalItem;
 import com.maiml.library.config.ConfigAttrs;
 import com.maiml.library.utils.AbstractItem;
@@ -175,6 +176,10 @@ public class BaseItemLayout2 extends LinearLayout {
             setListener(view,pos);
         }
 
+        if(onSwitchClickListener != null){
+            setButtonClick();
+        }
+
         viewList.add(view);
     }
 
@@ -221,7 +226,51 @@ public class BaseItemLayout2 extends LinearLayout {
         });
     }
 
+    /**
+     * 设置 button的点击事件
+     */
+    private void setButtonClick() {
 
+        if(onSwitchClickListener != null){
+
+            for(int i = 0;i<viewList.size();i++){
+
+                SparseArray<Mode> modeArray = configAttrs.getModeArray();
+
+                Mode mode = modeArray.get(i);
+
+                if(mode == Mode.BOTTON){
+
+                    ButtonItem view = (ButtonItem) viewList.get(i);
+
+                    SwitchImageView switchImageView = view.getSwitchImageView();
+
+                    onButtonClick(i,switchImageView);
+
+                }
+
+            }
+
+        }
+    }
+
+
+    private void onButtonClick(final int pos, final SwitchImageView switchImageView) {
+
+        switchImageView.setOnSwitchClickListener(new SwitchImageView.OnSwitchClickListener() {
+            @Override
+            public void onClick(boolean isCheck) {
+
+
+                if(isCheck){
+                    switchImageView.setImageResource(R.drawable.img_up);
+                }else{
+                    switchImageView.setImageResource(R.drawable.img_turn_down);
+                }
+                 onSwitchClickListener.onClick(pos,isCheck);
+            }
+        });
+    }
 
 
     public BaseItemLayout2 setConfigAttrs(ConfigAttrs attrs){
@@ -249,6 +298,14 @@ public class BaseItemLayout2 extends LinearLayout {
 
     //=================================监听事件====================================
 
+
+
+
+
+
+
+
+
     private OnBaseItemClick onBaseItemClick;
 
     public void setOnBaseItemClick(OnBaseItemClick onBaseItemClick) {
@@ -266,7 +323,9 @@ public class BaseItemLayout2 extends LinearLayout {
 
     public void setOnSwitchClickListener(OnSwitchClickListener onSwitchClickListener) {
         this.onSwitchClickListener = onSwitchClickListener;
+        setButtonClick();
     }
+
 
     public interface OnSwitchClickListener{
 
