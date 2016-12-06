@@ -1,5 +1,14 @@
 # BaseItemLayout
 
+
+#更新
+
+对项目进行了重构，详情请看[项目重构](http://www.jianshu.com/users/141bda5f1c5c/latest_articles)
+
+
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/uml.png" width = "270" height = "480" alt="效果图" align=center />
+
+
 #简介
 
 在工作中经常会遇到下面的一些布局，如图标红处：

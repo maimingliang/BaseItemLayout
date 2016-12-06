@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="com.maiml.baseui.MainActivity">
 
-     <com.maiml.library.BaseItemLayout2
+     <com.maiml.library.BaseItemLayout
          android:id="@+id/layout"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
 
          >
 
-     </com.maiml.library.BaseItemLayout2>
+     </com.maiml.library.BaseItemLayout>
 
 
 </LinearLayout>

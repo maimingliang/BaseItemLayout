@@ -1,4 +1,4 @@
-package com.maiml.library;
+package com.maiml.library.factory;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,7 +8,8 @@ import com.maiml.library.Item.ButtonItem;
 import com.maiml.library.Item.NormalItem;
 import com.maiml.library.Item.TextItem;
 import com.maiml.library.config.ConfigAttrs;
-import com.maiml.library.utils.AbstractItem;
+import com.maiml.library.Item.AbstractItem;
+import com.maiml.library.config.Mode;
 
 /**
  * Created by maimingliang on 2016/12/4.
@@ -20,6 +21,13 @@ public class ItemFactory extends AbstractItemFactory {
         super(context);
     }
 
+    /**
+     * 创建出ItemView
+     * @param mode  通过传入 不同mode 来创建出不同类型的itemview
+     * @param attrs
+     * @param <T>
+     * @return
+     */
     @Override
     public  <T extends AbstractItem> T createItem(Mode mode, ConfigAttrs attrs) {
         Log.e("mode",mode.name());

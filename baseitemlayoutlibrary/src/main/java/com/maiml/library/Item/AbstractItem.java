@@ -1,4 +1,4 @@
-package com.maiml.library.utils;
+package com.maiml.library.Item;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.maiml.baseitemlayoutlibrary.R;
 import com.maiml.library.config.ConfigAttrs;
+import com.maiml.library.utils.DensityUtil;
 
 /**
  * Created by maimingliang on 2016/12/4.
@@ -78,6 +79,10 @@ public abstract class AbstractItem extends RelativeLayout{
     }
 
 
+    /**
+     * 创建出itemview
+     * @param configAttrs
+     */
     public void create(ConfigAttrs configAttrs){
 
         setConfigAttrs(configAttrs);

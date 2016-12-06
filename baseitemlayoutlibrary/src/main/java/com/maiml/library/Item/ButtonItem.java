@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.maiml.library.SwitchImageView;
-import com.maiml.library.utils.AbstractItem;
 import com.maiml.library.utils.DensityUtil;
 
 /**

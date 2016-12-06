@@ -8,7 +8,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.maiml.baseitemlayoutlibrary.R;
-import com.maiml.library.utils.AbstractItem;
 import com.maiml.library.utils.DensityUtil;
 
 /**

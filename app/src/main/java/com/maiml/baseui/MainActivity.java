@@ -5,8 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.maiml.library.BaseItemLayout;
-import com.maiml.library.BaseItemLayout2;
-import com.maiml.library.Mode;
+import com.maiml.library.config.Mode;
 import com.maiml.library.config.ConfigAttrs;
 
 import java.util.ArrayList;
@@ -15,14 +14,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private BaseItemLayout2 layout;
+    private BaseItemLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        layout = (BaseItemLayout2) findViewById(R.id.layout);
+        layout = (BaseItemLayout) findViewById(R.id.layout);
 
         initData();
 
@@ -93,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        layout.setOnBaseItemClick(new BaseItemLayout2.OnBaseItemClick() {
+        layout.setOnBaseItemClick(new BaseItemLayout.OnBaseItemClick() {
             @Override
             public void onItemClick(int position) {
                 Log.e("click","---> " +position);
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        layout.setOnSwitchClickListener(new BaseItemLayout2.OnSwitchClickListener() {
+        layout.setOnSwitchClickListener(new BaseItemLayout.OnSwitchClickListener() {
             @Override
             public void onClick(int position, boolean isCheck) {
                 Log.e("switch",position +"  " + isCheck);

@@ -1,14 +1,7 @@
 package com.maiml.library.config;
 
-import android.util.Log;
 import android.util.SparseArray;
-import android.view.View;
 
-import com.maiml.library.BaseItemLayout;
-import com.maiml.library.ItemView;
-import com.maiml.library.Mode;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**

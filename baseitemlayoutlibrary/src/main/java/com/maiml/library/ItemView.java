@@ -4,9 +4,6 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -262,18 +259,18 @@ public class ItemView extends RelativeLayout {
         return switchImageView;
     }
 
-    public void setShowStyle(BaseItemLayout.Mode mode){
+    public void setShowStyle(BaseItemLayout3.Mode mode){
 
         hideRightAllType();
 
         if(mode == null){
-            mode = BaseItemLayout.Mode.DEFAULT;
+            mode = BaseItemLayout3.Mode.DEFAULT;
         }
-        if(mode == BaseItemLayout.Mode.IMAGE){
+        if(mode == BaseItemLayout3.Mode.IMAGE){
             arrowImg.setVisibility(VISIBLE);
-        }else if(mode == BaseItemLayout.Mode.TXT){
+        }else if(mode == BaseItemLayout3.Mode.TXT){
             rightTextView.setVisibility(VISIBLE);
-        }else if(mode == BaseItemLayout.Mode.BUTTON){
+        }else if(mode == BaseItemLayout3.Mode.BUTTON){
             switchImageView.setVisibility(VISIBLE);
         }
 
@@ -289,9 +286,9 @@ public class ItemView extends RelativeLayout {
     }
 
 
-     private BaseItemLayout.OnSwitchClickListener onSwitchClickListener;
+     private BaseItemLayout3.OnSwitchClickListener onSwitchClickListener;
 
-    public BaseItemLayout.OnSwitchClickListener getOnSwitchClickListener() {
+    public BaseItemLayout3.OnSwitchClickListener getOnSwitchClickListener() {
         return onSwitchClickListener;
     }
 }

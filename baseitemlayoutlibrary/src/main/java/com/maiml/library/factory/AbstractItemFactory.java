@@ -1,9 +1,10 @@
-package com.maiml.library;
+package com.maiml.library.factory;
 
 import android.content.Context;
 
 import com.maiml.library.config.ConfigAttrs;
-import com.maiml.library.utils.AbstractItem;
+import com.maiml.library.Item.AbstractItem;
+import com.maiml.library.config.Mode;
 
 /**
  * Created by maimingliang on 2016/12/4.
