@@ -5,5 +5,5 @@
     <item name="txt_id" type="id" />
     <item name="arrow_id" type="id" />
     <item name="right_text_id" type="id" />
-
+    <item name="red_text_id" type="id" />
 </resources>

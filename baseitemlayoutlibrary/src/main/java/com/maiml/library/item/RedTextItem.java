@@ -3,8 +3,10 @@ package com.maiml.library.item;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,6 +23,9 @@ public class RedTextItem extends AbstractItem {
 
     private TextView redTextView;
     private LayoutParams redTextViewlp;
+    private ImageView arrowView;
+    private LayoutParams arrowViewlp;
+
     public RedTextItem(Context context) {
         super(context);
     }
@@ -36,7 +41,8 @@ public class RedTextItem extends AbstractItem {
     @Override
     public void createWidget() {
         redTextView = new TextView(mContext);
-        redTextView.setId(R.id.right_text_id);
+        redTextView.setId(R.id.red_text_id);
+        arrowView = new ImageView(mContext);
     }
 
     @Override
@@ -45,12 +51,20 @@ public class RedTextItem extends AbstractItem {
                 (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         redTextViewlp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
         redTextViewlp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
+
+
+        arrowViewlp = new LayoutParams
+                (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        arrowViewlp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,RelativeLayout.TRUE);
+        arrowViewlp.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+//        arrowViewlp.addRule(RelativeLayout.RIGHT_OF,R.id.red_text_id);
     }
 
     @Override
     public void addWidget() {
         super.addWidget();
         addView(redTextView,redTextViewlp);
+        addView(arrowView,arrowViewlp);
         setRightTextStyle();
     }
 
@@ -72,12 +86,13 @@ public class RedTextItem extends AbstractItem {
                 ? "" : configAttrs.getRightTextArray().get(configAttrs.getPosition());
 
 
-
-        redTextViewlp.rightMargin = DensityUtil.dip2px(mContext,configAttrs.getArrowMarginRight());
+        int marginRight = configAttrs.getArrowMarginRight() * 2 + 5;
+        redTextViewlp.rightMargin = DensityUtil.dip2px(mContext,marginRight);
 
         redTextView.setText(text);
         redTextView.setBackgroundResource(R.drawable.shape_text_red);
 
+        redTextView.setPadding(10,0,10,0);
         redTextView.setGravity(Gravity.CENTER);
         redTextView.setTextColor(0xffffffff);
         redTextView.setTextSize(configAttrs.getRightTextSize());
@@ -85,12 +100,10 @@ public class RedTextItem extends AbstractItem {
 
         if(configAttrs.getArrowResId() != 0){
 
-            Drawable drawable= getResources().getDrawable(configAttrs.getArrowResId());
-            /// 这一步必须要做,否则不会显示.
-            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-            redTextView.setCompoundDrawables(null,null,drawable,null);
-            redTextView.setCompoundDrawablePadding(40);
+            Log.e("resid","------> res = " + configAttrs.getArrowResId());
+            arrowViewlp.rightMargin = DensityUtil.dip2px(mContext,configAttrs.getArrowMarginRight());
 
+            arrowView.setBackgroundResource(configAttrs.getArrowResId());
         }
 
     }
