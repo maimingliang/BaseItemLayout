@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.maiml.baseitemlayoutlibrary.R;
-import com.maiml.library.Item.ButtonItem;
+import com.maiml.library.item.ButtonItem;
 import com.maiml.library.config.CommonCons;
 import com.maiml.library.config.ConfigAttrs;
-import com.maiml.library.Item.AbstractItem;
+import com.maiml.library.item.AbstractItem;
 import com.maiml.library.config.Mode;
 import com.maiml.library.factory.AbstractItemFactory;
 import com.maiml.library.factory.ItemFactory;
@@ -123,33 +123,6 @@ public class BaseItemLayout extends LinearLayout {
         }
 
     }
-
-    private void setSwitchImage(final int i, ItemView itemView) {
-
-//        if(modeArray.get(i) == Mode.BUTTON){
-//
-//           final SwitchImageView switchImageView = itemView.setSwitchImageViewStyle(trunResId, upResId, arrowMarginRight);
-//
-//            switchImageView.setOnSwitchClickListener(new SwitchImageView.OnSwitchClickListener() {
-//                @Override
-//                public void onClick(boolean isCheck) {
-//
-//                    if(isCheck){
-//                        switchImageView.setImageResource(upResId);
-//
-//                    }else{
-//                        switchImageView.setImageResource(trunResId);
-//                    }
-//                    if(onSwitchClickListener != null){
-//                        onSwitchClickListener.onClick(i,isCheck);
-//                    }
-//                }
-//            });
-//
-//
-//        }
-    }
-
 
     /**
      * 添加 item

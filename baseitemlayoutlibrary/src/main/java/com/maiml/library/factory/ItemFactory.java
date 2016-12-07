@@ -3,12 +3,13 @@ package com.maiml.library.factory;
 import android.content.Context;
 import android.util.Log;
 
-import com.maiml.library.Item.ArrowItem;
-import com.maiml.library.Item.ButtonItem;
-import com.maiml.library.Item.NormalItem;
-import com.maiml.library.Item.TextItem;
+import com.maiml.library.item.ArrowItem;
+import com.maiml.library.item.ButtonItem;
+import com.maiml.library.item.NormalItem;
+import com.maiml.library.item.RedTextItem;
+import com.maiml.library.item.TextItem;
 import com.maiml.library.config.ConfigAttrs;
-import com.maiml.library.Item.AbstractItem;
+import com.maiml.library.item.AbstractItem;
 import com.maiml.library.config.Mode;
 
 /**
@@ -54,6 +55,8 @@ public class ItemFactory extends AbstractItemFactory {
                 item = new ButtonItem(mContext);
             }else if(mode == Mode.TEXT){
                 item = new TextItem(mContext);
+            }else if(mode == Mode.RED_TEXT){
+                item = new RedTextItem(mContext);
             }
 
 

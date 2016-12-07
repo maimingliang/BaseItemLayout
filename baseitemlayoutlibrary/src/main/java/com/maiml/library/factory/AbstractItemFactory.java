@@ -3,7 +3,7 @@ package com.maiml.library.factory;
 import android.content.Context;
 
 import com.maiml.library.config.ConfigAttrs;
-import com.maiml.library.Item.AbstractItem;
+import com.maiml.library.item.AbstractItem;
 import com.maiml.library.config.Mode;
 
 /**

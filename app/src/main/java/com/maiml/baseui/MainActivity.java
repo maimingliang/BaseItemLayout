@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
                 .setArrowResId(R.drawable.img_find_arrow).
                 setIconHeight(24)
                 .setIconWidth(24)
-                .setRightText(4,"love u")
-                .setItemMode(4,Mode.TEXT)
+                .setRightText(4,"12")
+                .setItemMode(4,Mode.RED_TEXT)
         ;
 
         layout.setConfigAttrs(attrs)

@@ -1,4 +1,4 @@
-package com.maiml.library.Item;
+package com.maiml.library.item;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

@@ -11,6 +11,7 @@ public enum  Mode {
     ARROW,
     BOTTON,
     TEXT,
+    RED_TEXT,
     MIX;
 
 }
