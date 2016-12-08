@@ -73,7 +73,7 @@ public class ArrowItem extends AbstractItem {
             throw new RuntimeException("arrow res id is null");
 
         }
-        arrowLp.rightMargin = DensityUtil.dip2px(mContext,configAttrs.getArrowMarginRight());
+        arrowLp.rightMargin = DensityUtil.dip2px(mContext,configAttrs.getMarginRight());
         arrowImg.setImageResource(configAttrs.getArrowResId());
 
     }

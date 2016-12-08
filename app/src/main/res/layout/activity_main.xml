@@ -8,24 +8,51 @@
     android:orientation="vertical"
     tools:context="com.maiml.baseui.MainActivity">
 
-     <com.maiml.library.BaseItemLayout
-         android:id="@+id/layout"
+
+     <Button
+         android:text="默认Mode.NORMAL"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         app:text_size  = "18"
-         app:text_color = "@color/gray_333333"
-         app:icon_margin_left = "10"
-         app:icon_text_margin = "10"
-         app:margin_right = "10"
-         app:item_height = "50"
-         app:line_color = "@color/line_d6d6d6"
-         app:right_text_size = "@color/line_d6d6d6"
-         app:right_text_color  = "@color/gray_333333"
-         app:right_text_margin = "10"
+         android:id="@+id/button" />
 
-         >
+     <Button
+         android:text="Mode.TXT模式"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:id="@+id/button2" />
 
-     </com.maiml.library.BaseItemLayout>
+     <Button
+         android:text="Mode.BUTTON模式"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:id="@+id/button3" />
+
+     <Button
+         android:text="Mode.RED_TXT模式"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:id="@+id/button4" />
+
+     <Button
+         android:text="Mode.ARROW模式"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:id="@+id/button5" />
+
+     <Button
+         android:text="混合模式"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:id="@+id/button6" />
 
 
+     <RelativeLayout
+         android:background="@color/colorAccent"
+         android:layout_width="match_parent"
+         android:layout_height="50dp">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="sdfdf"/>
+     </RelativeLayout>
 </LinearLayout>

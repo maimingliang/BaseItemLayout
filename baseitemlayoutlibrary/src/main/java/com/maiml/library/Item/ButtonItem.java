@@ -62,12 +62,10 @@ public class ButtonItem extends AbstractItem {
             throw new RuntimeException("config attrs is not set");
         }
         if(configAttrs.getTrunResId() <= 0 || configAttrs.getUpResId() <= 0){
-            throw new RuntimeException("turnResId or upResId is not set");
+            throw new RuntimeException("button res is not set");
         }
 
-
-
-        switchCblp.rightMargin = DensityUtil.dip2px(mContext,configAttrs.getArrowMarginRight());
+        switchCblp.rightMargin = DensityUtil.dip2px(mContext,configAttrs.getMarginRight());
 
         switchImageView.setImageResource(configAttrs.getTrunResId());
 

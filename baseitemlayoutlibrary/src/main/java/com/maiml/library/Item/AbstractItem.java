@@ -161,7 +161,7 @@ public abstract class AbstractItem extends RelativeLayout{
 
         iconLp.leftMargin = DensityUtil.dip2px(mContext,configAttrs.getIconMarginLeft());
 
-         iconImg.setBackgroundResource(configAttrs.getResIdList().get(configAttrs.getPosition()));
+        iconImg.setBackgroundResource(configAttrs.getResIdList().get(configAttrs.getPosition()));
 
         ViewGroup.LayoutParams layoutParams = iconImg.getLayoutParams();
 

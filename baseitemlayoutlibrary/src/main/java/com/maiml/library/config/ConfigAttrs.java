@@ -67,7 +67,7 @@ public  class ConfigAttrs {
     /**
      * 箭头距离 最右边 的 marginRight 大小
      */
-    private int arrowMarginRight;
+    private int marginRight;
 
     /**
      * 箭头的资源Id
@@ -224,12 +224,12 @@ public  class ConfigAttrs {
         return this;
     }
 
-    public int getArrowMarginRight() {
-        return arrowMarginRight;
+    public int getMarginRight() {
+        return marginRight;
     }
 
-    public ConfigAttrs setArrowMarginRight(int arrowMarginRight) {
-        this.arrowMarginRight = arrowMarginRight;
+    public ConfigAttrs setMarginRight(int marginRight) {
+        this.marginRight = marginRight;
         return this;
     }
 

@@ -14,6 +14,9 @@ import com.maiml.baseitemlayoutlibrary.R;
 import com.maiml.library.RedTextView;
 import com.maiml.library.utils.DensityUtil;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by maimingliang on 2016/12/7.
  */
@@ -25,6 +28,8 @@ public class RedTextItem extends AbstractItem {
     private LayoutParams redTextViewlp;
     private ImageView arrowView;
     private LayoutParams arrowViewlp;
+    // 数字格式
+    private static final String REG_NUMBER = "^\\d+$";
 
     public RedTextItem(Context context) {
         super(context);
@@ -86,8 +91,13 @@ public class RedTextItem extends AbstractItem {
                 ? "" : configAttrs.getRightTextArray().get(configAttrs.getPosition());
 
 
-        int marginRight = configAttrs.getArrowMarginRight() * 2 + 5;
+        int marginRight = configAttrs.getMarginRight() * 2 + 5;
         redTextViewlp.rightMargin = DensityUtil.dip2px(mContext,marginRight);
+
+
+        if(!number(text)){
+            throw  new RuntimeException("right text must be number");
+        }
 
         redTextView.setText(text);
         redTextView.setBackgroundResource(R.drawable.shape_text_red);
@@ -100,12 +110,30 @@ public class RedTextItem extends AbstractItem {
 
         if(configAttrs.getArrowResId() != 0){
 
-            Log.e("resid","------> res = " + configAttrs.getArrowResId());
-            arrowViewlp.rightMargin = DensityUtil.dip2px(mContext,configAttrs.getArrowMarginRight());
+             arrowViewlp.rightMargin = DensityUtil.dip2px(mContext,configAttrs.getMarginRight());
 
-            arrowView.setBackgroundResource(configAttrs.getArrowResId());
+             arrowView.setBackgroundResource(configAttrs.getArrowResId());
         }
 
     }
+
+    /**
+     * 验证数字格式(只能为0-9的值)
+     */
+    public  boolean number(String value) {
+        return matcher(REG_NUMBER, value);
+    }
+
+    public  boolean matcher(String regEx, String input) {
+
+        if (input != null && !"".equals(input)) {
+            Pattern p = Pattern.compile(regEx);
+            Matcher m = p.matcher(input);
+            return m.matches();
+        } else {
+            return false;
+        }
+    }
+
 
 }

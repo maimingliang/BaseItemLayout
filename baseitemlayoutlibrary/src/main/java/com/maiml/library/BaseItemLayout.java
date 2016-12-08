@@ -265,7 +265,7 @@ public class BaseItemLayout extends LinearLayout {
         configAttrs.setRightTextColor(rightTextColor);
         configAttrs.setRightTextSize(rightTextSize);
         configAttrs.setIconTextMargin(iconTextMargin);
-        configAttrs.setArrowMarginRight(arrowMarginRight);
+        configAttrs.setMarginRight(arrowMarginRight);
         configAttrs.setItemHeight(itemHeight);
         configAttrs.setRightTextMagin(rightTextMagin);
         return this;

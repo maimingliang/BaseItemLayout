@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NormalActivity"></activity>
+        <activity android:name=".TxtActivity"></activity>
+        <activity android:name=".ButtonActivity"></activity>
+        <activity android:name=".ArrowActivity"></activity>
+        <activity android:name=".RedTextActivity"></activity>
+        <activity android:name=".MixActivity"></activity>
     </application>
 
 </manifest>

@@ -81,7 +81,7 @@ public class TextItem extends AbstractItem {
 
 
 
-        rightTextViewlp.rightMargin = DensityUtil.dip2px(mContext,configAttrs.getArrowMarginRight());
+        rightTextViewlp.rightMargin = DensityUtil.dip2px(mContext,configAttrs.getMarginRight());
 
         rightTextView.setText(text);
 
