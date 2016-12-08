@@ -3,7 +3,7 @@
 
 #更新
 
-对项目进行了重构，详情请看[项目重构](http://www.jianshu.com/users/141bda5f1c5c/latest_articles)
+对项目进行了重构，详情请看[项目重构](http://www.jianshu.com/p/4bc1a30ff7e1)
 
 上个图
 
@@ -38,9 +38,8 @@
     dependencies {
 
          ...
-         //compile 'com.maiml:baseitemlayoutlibrary:1.0.0'//旧版本，如果有使用该版本的，由于新版本改动比较大，强烈建议升级。
 
-         compile 'com.maiml:baseitemlayoutlibrary:2.1.1'
+         compile 'com.maiml:baseitemlayoutlibrary:2.2.3'
 
     }
 
