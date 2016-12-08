@@ -286,7 +286,7 @@
      ```
 
 <div  align="center">
-<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new10.jpg" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/maimingliang/BaseItemLayout/blob/master/new10.png" width = "270" height = "480" alt="效果图" align=center />
 
 </div>
 
