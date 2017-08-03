@@ -32,20 +32,21 @@ public class BaseItemLayout extends LinearLayout {
     private Context mContext;
 
 
-    private AbstractItemFactory factory;
-    private ConfigAttrs configAttrs;
+    private AbstractItemFactory mFactory;
+    private ConfigAttrs mConfigAttrs;
 
-    private List<View> viewList = new ArrayList<>();
-    private int lineColor;
-    private int textSize;
-    private int textColor;
-    private int iconMarginLeft;
-    private int iconTextMargin;
-    private int arrowMarginRight;
-    private int itemHeight;
-    private int rightTextSize;
-    private int rightTextColor;
-    private int rightTextMagin;
+    private List<View> mViewList = new ArrayList<>();
+    private int mLineColor;
+    private int mTextSize;
+    private int mTextColor;
+    private int mIconMarginLeft;
+    private int mIconTextMargin;
+    private int mArrowMarginRight;
+    private int mItemHeight;
+    private int mRightTextSize;
+    private int mRightTextColor;
+    private int mRightTextMagin;
+    private int mItemBgSelector;
 
 
     public BaseItemLayout(Context context) {
@@ -68,16 +69,17 @@ public class BaseItemLayout extends LinearLayout {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ItemAttrs);
 
-        lineColor = a.getColor(R.styleable.ItemAttrs_line_color, CommonCons.DF_LINE_COLOR);
-        textSize = a.getInt(R.styleable.ItemAttrs_text_size, CommonCons.DF_LINE_COLOR);
-        textColor = a.getColor(R.styleable.ItemAttrs_text_color, CommonCons.DF_TEXT_COLOR);
-        iconMarginLeft = a.getInt(R.styleable.ItemAttrs_icon_margin_left, CommonCons.DF_ICON_MARGIN_LEFT);
-        iconTextMargin = a.getInt(R.styleable.ItemAttrs_icon_text_margin, CommonCons.DF_ICON_TEXT_MARGIN);
-        arrowMarginRight = a.getInt(R.styleable.ItemAttrs_margin_right, CommonCons.DF_ARROW_MARGIN_RIGHT);
-        itemHeight = a.getInt(R.styleable.ItemAttrs_item_height, CommonCons.DF_ICON_HEIGHT);
-        rightTextSize = a.getInt(R.styleable.ItemAttrs_right_text_size, CommonCons.DF_RIGHT_TEXT_SIZE);
-        rightTextColor = a.getColor(R.styleable.ItemAttrs_right_text_color, CommonCons.DF_RIGHT_TEXT_COLOR);
-        rightTextMagin = a.getInt(R.styleable.ItemAttrs_right_text_margin, CommonCons.DF_RIGHT_TEXT_MAGIN);
+        mLineColor = a.getColor(R.styleable.ItemAttrs_bil_line_color, CommonCons.DF_LINE_COLOR);
+        mTextSize = a.getInt(R.styleable.ItemAttrs_bil_text_size, CommonCons.DF_TEXT_SIZE);
+        mTextColor = a.getColor(R.styleable.ItemAttrs_bil_text_color, CommonCons.DF_TEXT_COLOR);
+        mIconMarginLeft = a.getInt(R.styleable.ItemAttrs_bil_icon_margin_left, CommonCons.DF_ICON_MARGIN_LEFT);
+        mIconTextMargin = a.getInt(R.styleable.ItemAttrs_bil_icon_text_margin, CommonCons.DF_ICON_TEXT_MARGIN);
+        mArrowMarginRight = a.getInt(R.styleable.ItemAttrs_bil_margin_right, CommonCons.DF_ARROW_MARGIN_RIGHT);
+        mItemHeight = a.getInt(R.styleable.ItemAttrs_bil_item_height, CommonCons.DF_ITEM_HEIGHT);
+        mRightTextSize = a.getInt(R.styleable.ItemAttrs_bil_right_text_size, CommonCons.DF_RIGHT_TEXT_SIZE);
+        mRightTextColor = a.getColor(R.styleable.ItemAttrs_bil_right_text_color, CommonCons.DF_RIGHT_TEXT_COLOR);
+        mRightTextMagin = a.getInt(R.styleable.ItemAttrs_bil_right_text_margin, CommonCons.DF_RIGHT_TEXT_MAGIN);
+        mItemBgSelector = a.getInt(R.styleable.ItemAttrs_bil_item_bg_color, CommonCons.ITEM_BG_COLOR);
 
         a.recycle();
     }
@@ -86,38 +88,38 @@ public class BaseItemLayout extends LinearLayout {
     private void init(Context context){
         mContext = context;
         setOrientation(VERTICAL);
-        factory = new ItemFactory(context);
-     }
+        mFactory = new ItemFactory(context);
+    }
 
 
 
     public void create(){
 
 
-        if(configAttrs == null){
+        if(mConfigAttrs == null){
             throw new RuntimeException("config attrs  is null");
         }
 
 
-        if(configAttrs.getValueList() == null){
+        if(mConfigAttrs.getValueList() == null){
             throw new RuntimeException("valueList  is null");
         }
 
-        if(configAttrs.getResIdList() == null){
+        if(mConfigAttrs.getResIdList() == null){
             throw new RuntimeException(" resIdList is null");
         }
 
-        if(configAttrs.getValueList().size() != configAttrs.getResIdList().size()){
+        if(mConfigAttrs.getValueList().size() != mConfigAttrs.getResIdList().size()){
             throw new RuntimeException("params not match, valueList.size() should be equal resIdList.size()");
         }
 
-        for( int i = 0 ;i < configAttrs.getValueList().size();i++){
+        for(int i = 0; i < mConfigAttrs.getValueList().size(); i++){
 
 
-            configAttrs.setPosition(i);
-            SparseArray<Mode> modeArray = configAttrs.getModeArray();
+            mConfigAttrs.setPosition(i);
+            SparseArray<Mode> modeArray = mConfigAttrs.getModeArray();
             Mode mode = modeArray.get(i);
-            AbstractItem itemView = factory.createItem(mode,configAttrs);
+            AbstractItem itemView = mFactory.createItem(mode, mConfigAttrs);
             addItem(itemView,i);
 
         }
@@ -133,10 +135,10 @@ public class BaseItemLayout extends LinearLayout {
 
 
 
-        if (configAttrs.getMarginArray() != null ) {
+        if (mConfigAttrs.getMarginArray() != null ) {
 
-            if(configAttrs.getMarginArray().get(pos) != null){
-                addView(createLineView((Integer) configAttrs.getMarginArray().get(pos)));
+            if(mConfigAttrs.getMarginArray().get(pos) != null){
+                addView(createLineView((Integer) mConfigAttrs.getMarginArray().get(pos)));
             }
 
         } else {
@@ -146,7 +148,7 @@ public class BaseItemLayout extends LinearLayout {
 
         addView(view);
         addView(createLineView(CommonCons.ZERO_HEIGHT));
-//
+        //
         if(onBaseItemClick != null){
             setListener(view,pos);
         }
@@ -155,7 +157,7 @@ public class BaseItemLayout extends LinearLayout {
             setButtonClick();
         }
 
-        viewList.add(view);
+        mViewList.add(view);
     }
 
     /**
@@ -170,14 +172,14 @@ public class BaseItemLayout extends LinearLayout {
         lp.topMargin = DensityUtil.dip2px(mContext,margin);
 
         view.setLayoutParams(lp);
-        view.setBackgroundColor(lineColor);
+        view.setBackgroundColor(mLineColor);
         return view;
     }
 
     private void setOnClick() {
         if(onBaseItemClick != null){
-            for(int i = 0 ;i <viewList.size();i++){
-                View view = viewList.get(i);
+            for(int i = 0; i < mViewList.size(); i++){
+                View view = mViewList.get(i);
                 setListener(view,i);
             }
         }
@@ -208,15 +210,15 @@ public class BaseItemLayout extends LinearLayout {
 
         if(onSwitchClickListener != null){
 
-            for(int i = 0;i<viewList.size();i++){
+            for(int i = 0; i< mViewList.size(); i++){
 
-                SparseArray<Mode> modeArray = configAttrs.getModeArray();
+                SparseArray<Mode> modeArray = mConfigAttrs.getModeArray();
 
                 Mode mode = modeArray.get(i);
 
                 if(mode == Mode.BOTTON){
 
-                    ButtonItem view = (ButtonItem) viewList.get(i);
+                    ButtonItem view = (ButtonItem) mViewList.get(i);
 
                     SwitchImageView switchImageView = view.getSwitchImageView();
 
@@ -242,7 +244,7 @@ public class BaseItemLayout extends LinearLayout {
                 }else{
                     switchImageView.setImageResource(R.drawable.img_turn_down);
                 }
-                 onSwitchClickListener.onClick(pos,isCheck);
+                onSwitchClickListener.onClick(pos,isCheck);
             }
         });
     }
@@ -254,20 +256,51 @@ public class BaseItemLayout extends LinearLayout {
         if(attrs == null){
             throw new RuntimeException("attrs is null");
         }
-        this.configAttrs = attrs;
+        this.mConfigAttrs = attrs;
 
 
+        if (mConfigAttrs.getLineColor() == 0) {
+            mConfigAttrs.setLineColor(mLineColor);
+        }
 
-        configAttrs.setLineColor(lineColor);
-        configAttrs.setTextSize(textSize);
-        configAttrs.setTextColor(textColor);
-        configAttrs.setIconMarginLeft(iconMarginLeft);
-        configAttrs.setRightTextColor(rightTextColor);
-        configAttrs.setRightTextSize(rightTextSize);
-        configAttrs.setIconTextMargin(iconTextMargin);
-        configAttrs.setMarginRight(arrowMarginRight);
-        configAttrs.setItemHeight(itemHeight);
-        configAttrs.setRightTextMagin(rightTextMagin);
+        if (mConfigAttrs.getTextSize() == 0) {
+            mConfigAttrs.setTextSize(mTextSize);
+        }
+
+        if (mConfigAttrs.getTextColor() == 0) {
+            mConfigAttrs.setTextColor(mTextColor);
+        }
+
+        if (mConfigAttrs.getIconMarginLeft() == 0) {
+            mConfigAttrs.setIconMarginLeft(mIconMarginLeft);
+        }
+
+        if (mConfigAttrs.getRightTextColor() == 0) {
+            mConfigAttrs.setRightTextColor(mRightTextColor);
+        }
+        if (mConfigAttrs.getRightTextSize() == 0) {
+            mConfigAttrs.setRightTextSize(mRightTextSize);
+        }
+
+        if (mConfigAttrs.getIconTextMargin() == 0) {
+            mConfigAttrs.setIconTextMargin(mIconTextMargin);
+        }
+        if (mConfigAttrs.getMarginRight() == 0) {
+            mConfigAttrs.setMarginRight(mArrowMarginRight);
+        }
+
+        if (mConfigAttrs.getItemHeight() == 0) {
+            mConfigAttrs.setItemHeight(mItemHeight);
+        }
+
+        if (mConfigAttrs.getRightTextMagin() == 0) {
+
+            mConfigAttrs.setRightTextMagin(mRightTextMagin);
+        }
+        if (mConfigAttrs.getItemBgSelector() == 0) {
+
+            mConfigAttrs.setItemBgSelector(mItemBgSelector);
+        }
         return this;
     }
 

@@ -8,7 +8,7 @@ import android.util.AttributeSet;
  * c创建正常的item
  */
 
-public class NormalItem extends AbstractItem{
+public class NormalItem extends com.maiml.library.item.AbstractItem {
 
 
     public NormalItem(Context context) {

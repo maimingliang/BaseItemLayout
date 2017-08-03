@@ -315,16 +315,16 @@
 
 |name|format|description|
 |:---:|:---:|:---:|
-| text_size| integer |字体大小
-| text_color| color |字体颜色
-| icon_margin_left| integer| 图标距离 左边的margin
-| icon_text_margin| integer| 文字距离 图标左边的margin
-| margin_right| integer|距离右边的margin
-| item_height| integer| item的高度
-| line_color| color| 线的颜色
-| right_text_size| integer|右边字体大小
-| right_text_color| color| 右边字体颜色
-| right_text_margin| integer| 右边字体与箭头的间距
+| bil_text_size| integer |字体大小
+| bil_text_color| color |字体颜色
+| bil_icon_margin_left| integer| 图标距离 左边的margin
+| bil_icon_text_margin| integer| 文字距离 图标左边的margin
+| bil_margin_right| integer|距离右边的margin
+| bil_item_height| integer| item的高度
+| bil_line_color| color| 线的颜色
+| bil_right_text_size| integer|右边字体大小
+| bil_right_text_color| color| 右边字体颜色
+| bil_right_text_margin| integer| 右边字体与箭头的间距
 
 #参数图解
 

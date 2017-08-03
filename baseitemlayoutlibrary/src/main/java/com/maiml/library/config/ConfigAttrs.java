@@ -1,5 +1,7 @@
 package com.maiml.library.config;
 
+import android.support.annotation.ColorRes;
+import android.support.annotation.NonNull;
 import android.util.SparseArray;
 
 import java.util.List;
@@ -98,6 +100,10 @@ public  class ConfigAttrs {
      */
     private int rightTextMagin;
 
+    /**
+     * item 的背景selector
+     */
+    private int itemBgSelector;
 
     /**
      *  每一个 item 与 item 之间的 marginTop 的大小
@@ -138,6 +144,15 @@ public  class ConfigAttrs {
         return itemHeight;
     }
 
+    public int getItemBgSelector() {
+        return itemBgSelector;
+    }
+
+    public ConfigAttrs setItemBgSelector( int drawableId){
+        this.itemBgSelector = drawableId;
+        return this;
+    }
+
     public ConfigAttrs setItemHeight(int itemHeight) {
         this.itemHeight = itemHeight;
         return this;
@@ -147,7 +162,7 @@ public  class ConfigAttrs {
         return lineColor;
     }
 
-    public ConfigAttrs setLineColor(int lineColor) {
+    public ConfigAttrs setLineColor(@ColorRes int lineColor) {
         this.lineColor = lineColor;
         return this;
     }
@@ -183,7 +198,7 @@ public  class ConfigAttrs {
         return textColor;
     }
 
-    public ConfigAttrs setTextColor(int textColor) {
+    public ConfigAttrs setTextColor(@ColorRes int textColor) {
         this.textColor = textColor;
         return this;
     }
@@ -210,7 +225,7 @@ public  class ConfigAttrs {
         return valueList;
     }
 
-    public ConfigAttrs setValueList(List<String> valueList) {
+    public ConfigAttrs setValueList(@NonNull List<String> valueList) {
         this.valueList = valueList;
         return this;
     }
@@ -219,7 +234,7 @@ public  class ConfigAttrs {
         return resIdList;
     }
 
-    public ConfigAttrs setResIdList(List<Integer> resIdList) {
+    public ConfigAttrs setResIdList(@NonNull List<Integer> resIdList) {
         this.resIdList = resIdList;
         return this;
     }

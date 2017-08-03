@@ -46,6 +46,7 @@ public class ButtonActivity extends AppCompatActivity {
         rightTextList.add("test1");
         rightTextList.add("test2");
         rightTextList.add("test3");
+
         rightTextList.add("test4");
         rightTextList.add("test5");
 

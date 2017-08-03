@@ -1,9 +1,8 @@
 package com.maiml.baseui;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.SurfaceView;
-import android.view.View;
 
 import com.maiml.library.BaseItemLayout;
 import com.maiml.library.config.ConfigAttrs;
@@ -51,7 +50,9 @@ public class NormalActivity extends AppCompatActivity {
                 .setResIdList(resIdList) // icon list
                 .setIconWidth(24)  //设置icon 的大小
                 .setIconHeight(24)
-                .setItemMode(Mode.NORMAL);
+                .setItemBgSelector( R.drawable.btn_list_item_black_bg2)
+                 .setItemMode(Mode.NORMAL);
+
         layout.setConfigAttrs(attrs)
                 .create(); //
 

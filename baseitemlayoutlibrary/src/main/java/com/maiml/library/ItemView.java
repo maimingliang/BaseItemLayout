@@ -259,22 +259,7 @@ public class ItemView extends RelativeLayout {
         return switchImageView;
     }
 
-    public void setShowStyle(BaseItemLayout3.Mode mode){
 
-        hideRightAllType();
-
-        if(mode == null){
-            mode = BaseItemLayout3.Mode.DEFAULT;
-        }
-        if(mode == BaseItemLayout3.Mode.IMAGE){
-            arrowImg.setVisibility(VISIBLE);
-        }else if(mode == BaseItemLayout3.Mode.TXT){
-            rightTextView.setVisibility(VISIBLE);
-        }else if(mode == BaseItemLayout3.Mode.BUTTON){
-            switchImageView.setVisibility(VISIBLE);
-        }
-
-    }
 
     /**
      * 隐藏右边全部类型的控件
@@ -286,9 +271,5 @@ public class ItemView extends RelativeLayout {
     }
 
 
-     private BaseItemLayout3.OnSwitchClickListener onSwitchClickListener;
 
-    public BaseItemLayout3.OnSwitchClickListener getOnSwitchClickListener() {
-        return onSwitchClickListener;
-    }
 }

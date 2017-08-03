@@ -2,6 +2,7 @@ package com.maiml.library.item;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -45,7 +46,7 @@ public abstract class AbstractItem extends RelativeLayout{
     private void init(Context context) {
         this.mContext = context;
 
-        setBackgroundResource(R.drawable.btn_list_item_bg);
+        setBackgroundResource(R.drawable.btn_list_item_black_bg);
         iconImg = new ImageView(context);
         iconImg.setId(R.id.img_id);
         textView = new TextView(context);
@@ -85,7 +86,7 @@ public abstract class AbstractItem extends RelativeLayout{
     public void create(ConfigAttrs configAttrs){
 
         setConfigAttrs(configAttrs);
-
+        setBackgroundResource(configAttrs.getItemBgSelector());
         createWidget();
         createWidgetLayoutParams();
         addWidget();
